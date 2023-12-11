@@ -1,0 +1,6 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models/zombie_gal/skull" 
+	"$surfaceprop" "plaster" 
+	"$bumpmap" "models/zombie_gal/skull_normal" 
+}

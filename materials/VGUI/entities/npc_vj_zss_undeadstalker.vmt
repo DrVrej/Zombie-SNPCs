@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+	"$basetexture" "VGUI/entities/npc_vj_zss_undeadstalker"
+	"$nolod" 1
+	"$vertexalpha" 1
+	"$vertexcolor" 1
+}

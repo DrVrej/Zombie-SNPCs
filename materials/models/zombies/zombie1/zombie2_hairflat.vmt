@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\zombies\Zombie1/zombie2_hairflat"
+	"$translucent" 1
+}

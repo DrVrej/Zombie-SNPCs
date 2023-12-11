@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\zombies\Zombie1\zp_sv1_pants"
+
+	"Proxies"
+	{
+		"ZombieVision"
+		{
+			"resultVar"	"$selfillumtint"
+		}
+	}
+}

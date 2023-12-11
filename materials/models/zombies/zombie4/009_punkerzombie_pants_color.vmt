@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\zombies\zombie4\009_punkerzombie_pants_color"
+	"$normalmapalphaenvmapmask" 1
+
+	"Proxies"
+	{
+		"ZombieVision"
+		{
+			"resultVar"	"$selfillumtint"
+		}
+	}
+}

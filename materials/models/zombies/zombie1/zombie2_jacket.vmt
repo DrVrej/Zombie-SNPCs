@@ -1,0 +1,16 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\zombies\Zombie1/zombie2_jacket"
+	//phong parameters
+	"$phong"     "1"
+
+	"$phongexponent"   "28"
+	"$phongboost"   "1"
+	"$phongfresnelranges"   "[0.6 5 1]"
+	
+	//rimlight parameters
+	"$rimlight" "1"
+	"$rimlightexponent" "20"
+	"$rimlightboost" "0.2"
+
+}

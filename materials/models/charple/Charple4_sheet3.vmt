@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "Models/Charple/Charple4_sheet3"
+	"$bumpmap" "Models/Charple/Charple4_normal3"
+	"$halflambert" 1
+	"$phong" "1"
+	"$phongexponent" "15"
+	"$phongboost"	"3.2"
+	"$phongfresnelranges"	"[ 0.15 1.1 0.8 ]"
+}

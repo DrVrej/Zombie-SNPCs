@@ -1,0 +1,23 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\zombies\zombie4\005_punkerzombie_body_color"
+	//phong parameters
+	"$phong"     "1"
+
+	"$phongexponent"   "5"
+	"$phongboost"   "0.1"
+	"$phongfresnelranges"   "[0.1 5 1]"
+	
+	//rimlight parameters
+	"$rimlight" "1"
+	"$rimlightexponent" "20"
+	"$rimlightboost" "0.1"
+
+	"Proxies"
+	{
+		"ZombieVision"
+		{
+			"resultVar"	"$selfillumtint"
+		}
+	}
+}

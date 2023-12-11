@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\zombies\Zombie1/zombie1_body_DIF"
+	//phong parameters
+	"$phong"     "1"
+
+	"$phongexponent"   "10"
+	"$phongboost"   "1"
+	"$phongfresnelranges"   "[0.4 5 1]"
+	
+	//rimlight parameters
+	"$rimlight" "1"
+	"$rimlightexponent" "20"
+	"$rimlightboost" "0.3"
+}

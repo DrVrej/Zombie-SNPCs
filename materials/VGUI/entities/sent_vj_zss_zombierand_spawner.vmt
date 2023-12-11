@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+	"$basetexture" "VGUI/entities/sent_vj_zss_zombierand_spawner"
+	"$nolod" 1
+	"$vertexalpha" 1
+	"$vertexcolor" 1
+}

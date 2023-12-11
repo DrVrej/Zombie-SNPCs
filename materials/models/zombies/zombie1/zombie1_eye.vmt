@@ -1,0 +1,8 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\zombies\Zombie1/zombie1_eye"
+	"$envmap" "env_cubemap"
+//	"$envmapcontrast" 1
+//	"$envmaptint" [1 0 0]
+	"$selfillum" 1 
+}
