@@ -73,6 +73,8 @@ function ENT:TranslateActivity(act)
 		elseif self:IsOnFire() then
 			return ACT_IDLE_ON_FIRE
 		end
+	elseif act == ACT_CLIMB_DOWN then -- Because there is no animation, so just use climb up!
+		return ACT_CLIMB_UP
 	end
 	return self.BaseClass.TranslateActivity(self, act)
 end
