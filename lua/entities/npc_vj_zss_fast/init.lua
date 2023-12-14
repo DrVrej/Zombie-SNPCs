@@ -22,7 +22,7 @@ ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on eve
 ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 ENT.HasLeapAttack = true -- Should the SNPC have a leap attack?
-ENT.AnimTbl_LeapAttack = {"leapstrike"} -- Melee Attack Animations
+ENT.AnimTbl_LeapAttack = {ACT_JUMP} -- Melee Attack Animations
 ENT.LeapDistance = 400 -- The distance of the leap, for example if it is set to 500, when the SNPC is 500 Unit away, it will jump
 ENT.LeapToMeleeDistance = 150 -- How close does it have to be until it uses melee?
 ENT.TimeUntilLeapAttackDamage = 0.2 -- How much time until it runs the leap damage code?
@@ -51,25 +51,27 @@ ENT.SoundTbl_Death = {"vj_zombies/fast/fzombie_die1.wav","vj_zombies/fast/fzombi
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnPreInitialize()
-	-- Have to randomize it here soo all types spawn equally since some are only skins
-	local randZombie = math.random(1, 7)
-	if randZombie == 1 then
-		self.Model = "models/vj_zombies/fast1.mdl"
-	elseif randZombie == 2 then
-		self.Model = "models/vj_zombies/fast3.mdl"
-	elseif randZombie == 3 then
-		self.Model = "models/vj_zombies/fast4.mdl"
-	elseif randZombie == 4 then
-		self.Model = "models/vj_zombies/fast5.mdl"
-		self:SetSkin(1)
-	elseif randZombie == 5 then
-		self.Model = "models/vj_zombies/fast5.mdl"
-		self:SetSkin(2)
-	elseif randZombie == 6 then
-		self.Model = "models/vj_zombies/fast5.mdl"
-		self:SetSkin(3)
-	else
-		self.Model = "models/vj_zombies/fast5.mdl"
+	if !self.Model then
+		-- Have to randomize it here soo all types spawn equally since some are only skins
+		local randZombie = math.random(1, 7)
+		if randZombie == 1 then
+			self.Model = "models/vj_zombies/fast1.mdl"
+		elseif randZombie == 2 then
+			self.Model = "models/vj_zombies/fast2.mdl"
+		elseif randZombie == 3 then
+			self.Model = "models/vj_zombies/fast3.mdl"
+		elseif randZombie == 4 then
+			self.Model = "models/vj_zombies/fast4.mdl"
+			self:SetSkin(1)
+		elseif randZombie == 5 then
+			self.Model = "models/vj_zombies/fast4.mdl"
+			self:SetSkin(2)
+		elseif randZombie == 6 then
+			self.Model = "models/vj_zombies/fast4.mdl"
+			self:SetSkin(3)
+		else
+			self.Model = "models/vj_zombies/fast4.mdl"
+		end
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -88,7 +90,7 @@ end
 function ENT:TranslateActivity(act)
 	if act == ACT_IDLE then
 		if !self:OnGround() then
-			return ACT_GLIDE
+			return ACT_JUMP
 		elseif self:IsOnFire() then
 			return ACT_IDLE_ON_FIRE
 		end
