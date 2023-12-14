@@ -5,7 +5,7 @@ include('shared.lua')
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/zombie/zombie_fast02.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = {"models/vj_zombies/fast2.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 100
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -15,8 +15,8 @@ ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1} -- Melee Attack Animations
 ENT.MeleeAttackDistance = 32 -- How close does it have to be until it attacks?
 ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go?
-ENT.TimeUntilMeleeAttackDamage = 0.2 -- This counted in seconds | This calculates the time until it hits something
-ENT.MeleeAttackDamage = 20
+ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
+ENT.MeleeAttackDamage = 5
 ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
 ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bleed? | 1 = always
 ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
@@ -35,14 +35,14 @@ ENT.LeapAttackVelocityForward = 300 -- How much forward force should it apply?
 ENT.LeapAttackVelocityUp = 250 -- How much upward force should it apply?
 ENT.LeapAttackDamage = 15
 ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
-ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
+ENT.DisableFootStepSoundTimer = true
+ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
 ENT.SoundTbl_FootStep = {"npc/fast_zombie/foot1.wav","npc/fast_zombie/foot2.wav","npc/fast_zombie/foot3.wav","npc/fast_zombie/foot4.wav"}
 ENT.SoundTbl_Breath = {"npc/fast_zombie/breathe_loop1.wav"}
 ENT.SoundTbl_Alert = {"npc/fast_zombie/fz_alert_close1.wav","npc/fast_zombie/fz_alert_far1.wav"}
-ENT.SoundTbl_MeleeAttack = {"npc/fast_zombie/claw_strike1.wav","npc/fast_zombie/claw_strike2.wav","npc/fast_zombie/claw_strike3.wav"}
+ENT.SoundTbl_MeleeAttackExtra = {"npc/zombie/claw_strike1.wav","npc/zombie/claw_strike2.wav","npc/zombie/claw_strike3.wav"}
 ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav","vj_zombies/slow/miss2.wav","vj_zombies/slow/miss3.wav","vj_zombies/slow/miss4.wav"}
 ENT.SoundTbl_LeapAttackJump = {"npc/fast_zombie/fz_scream1.wav"}
 ENT.SoundTbl_LeapAttackDamage = {"npc/fast_zombie/claw_strike1.wav","npc/fast_zombie/claw_strike2.wav","npc/fast_zombie/claw_strike3.wav"}
@@ -52,18 +52,24 @@ ENT.SoundTbl_Death = {"npc/fast_zombie/wake1.wav"}
 ENT.GeneralSoundPitch1 = 100
 ENT.GeneralSoundPitch2 = 100
 
--- Custom
-ENT.Zombie_ActLeapIdle = -1 -- Uses an undefined animation
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(13, 13, 50), Vector(-13, -13, 0))
 	self.Zombie_ActLeapIdle = self:GetSequenceActivity(self:LookupSequence("LeapStrike"))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:CustomOnAcceptInput(key, activator, caller, data) 
+	if key == "step" then
+		self:FootStepSoundCode()
+	elseif key == "melee" then
+		self:MeleeAttackCode()
+	end
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:TranslateActivity(act)
 	if act == ACT_IDLE then
 		if !self:OnGround() then
-			return self.Zombie_ActLeapIdle
+			return ACT_GLIDE
 		elseif self:IsOnFire() then
 			return ACT_IDLE_ON_FIRE
 		end

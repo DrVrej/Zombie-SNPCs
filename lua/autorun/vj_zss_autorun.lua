@@ -36,10 +36,10 @@ if VJExists == true then
 	VJ.AddNPC("Zombie Mini Boss", "npc_vj_zss_boss_mini", spawnCategory)
 	
 	-- Spawners
-	VJ.AddNPC("Random Regular Zombie", "sent_vj_zss_randregularz", spawnCategory)
-	VJ.AddNPC("Random Regular Zombie Spawner", "sent_vj_zss_randregular_spawner", spawnCategory)
-	VJ.AddNPC("Random Zombie", "sent_vj_zss_allrand", spawnCategory)
-	VJ.AddNPC("Random Zombie Spawner", "sent_vj_zss_allrand_spawner", spawnCategory)
+	VJ.AddNPC("Random Regular Zombie", "sent_vj_zss_rand_regular", spawnCategory)
+	VJ.AddNPC("Random Regular Zombie Spawner", "sent_vj_zss_rand_regular_sp", spawnCategory)
+	VJ.AddNPC("Random Zombie", "sent_vj_zss_rand", spawnCategory)
+	VJ.AddNPC("Random Zombie Spawner", "sent_vj_zss_rand_sp", spawnCategory)
 
 -- !!!!!! DON'T TOUCH ANYTHING BELOW THIS !!!!!! -------------------------------------------------------------------------------------------------------------------------
 	AddCSLuaFile()

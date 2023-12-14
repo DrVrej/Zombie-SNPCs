@@ -30,7 +30,7 @@ ENT.FootStepTimeRun = 0.5 -- Next foot step sound when it is running
 ENT.FootStepTimeWalk = 0.7 -- Next foot step sound when it is walking
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
-ENT.SoundTbl_FootStep = {"vj_zombies/slow/foot1.wav","vj_zombies/slow/foot2.wav","vj_zombies/slow/foot3.wav","vj_zombies/slow/foot4.wav"}
+ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
 ENT.SoundTbl_Idle = {"vj_zombies/slow/zombie_idle1.wav","vj_zombies/slow/zombie_idle2.wav","vj_zombies/slow/zombie_idle3.wav","vj_zombies/slow/zombie_idle4.wav","vj_zombies/slow/zombie_idle5.wav","vj_zombies/slow/zombie_idle6.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/slow/zombie_alert1.wav","vj_zombies/slow/zombie_alert2.wav","vj_zombies/slow/zombie_alert3.wav","vj_zombies/slow/zombie_alert4.wav"}
 ENT.SoundTbl_MeleeAttack = {"vj_zombies/slow/zombie_attack_1.wav","vj_zombies/slow/zombie_attack_2.wav","vj_zombies/slow/zombie_attack_3.wav","vj_zombies/slow/zombie_attack_4.wav","vj_zombies/slow/zombie_attack_5.wav","vj_zombies/slow/zombie_attack_6.wav"}

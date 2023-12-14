@@ -5,15 +5,15 @@ include('shared.lua')
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/zombie/Zombie_Soldier.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = {"models/vj_zombies/zombine.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 200
 ENT.HullType = HULL_WIDE_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"} -- NPCs with the same class with be allied to each other
 ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
-ENT.AnimTbl_MeleeAttack = {"vjseq_fastattack"}
-ENT.TimeUntilMeleeAttackDamage = 0.4
+ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK2}
+ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 35
 ENT.MeleeAttackDistance = 30 -- How close does it have to be until it attacks?
 ENT.MeleeAttackDamageDistance = 70 -- How far does the damage go?
@@ -26,8 +26,7 @@ ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bl
 ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
 ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
-ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.6 -- Next foot step sound when it is walking
+ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
@@ -49,15 +48,18 @@ ENT.GeneralSoundPitch2 = 100
 
 -- Custom
 ENT.Zombie_GrenadeOut = false -- Can only do it once!
-ENT.Zombie_ActGrenIdle = -1
-ENT.Zombie_ActGrenRun = -1
-ENT.Zombie_ActGrenWalk = -1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(13, 13, 60), Vector(-13, -13, 0))
-	self.Zombie_ActGrenIdle = self:GetSequenceActivity(self:LookupSequence("idle_grenade"))
-	self.Zombie_ActGrenRun = self:GetSequenceActivity(self:LookupSequence("run_all_grenade"))
-	self.Zombie_ActGrenWalk = self:GetSequenceActivity(self:LookupSequence("walk_all_grenade"))
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:CustomOnAcceptInput(key, activator, caller, data)
+	print(key)
+	if key == "step" then
+		self:FootStepSoundCode()
+	elseif key == "melee" then
+		self:MeleeAttackCode()
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Controller_Initialize(ply)
@@ -68,19 +70,23 @@ function ENT:TranslateActivity(act)
 	-- We have an active grenade
 	if IsValid(self.Zombie_Grenade) == true then
 		if act == ACT_IDLE then
-			return self.Zombie_ActGrenIdle
+			return ACT_HANDGRENADE_THROW1
 		elseif (act == ACT_WALK or act == ACT_RUN) && IsValid(self:GetEnemy()) then
-			if self.LatestEnemyDistance < 1024 then
-				return self.Zombie_ActGrenRun
+			if self.LatestEnemyDistance < 1024 then -- Make it run when close to the enemy
+				return ACT_HANDGRENADE_THROW3
 			else
-				return self.Zombie_ActGrenWalk
+				return ACT_HANDGRENADE_THROW2
 			end
 		end
-	elseif (act == ACT_WALK or act == ACT_RUN) && IsValid(self:GetEnemy()) then
-		if self.LatestEnemyDistance < 1024 then
-			return ACT_RUN
-		else
-			return ACT_WALK
+	elseif (act == ACT_WALK or act == ACT_RUN) then
+		if self:IsOnFire() then
+			return ACT_WALK_ON_FIRE
+		elseif  IsValid(self:GetEnemy()) then
+			if self.LatestEnemyDistance < 1024 then -- Make it run when close to the enemy
+				return ACT_RUN
+			else
+				return ACT_WALK
+			end
 		end
 	end
 	return self.BaseClass.TranslateActivity(self, act)
@@ -100,7 +106,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Zombie_CreateGrenade()
 	self.Zombie_GrenadeOut = true
-	self:VJ_ACT_PLAYACTIVITY("pullgrenade", true, false, true)
+	self:VJ_ACT_PLAYACTIVITY(ACT_SLAM_DETONATOR_DRAW, true, false, true)
 	timer.Simple(0.6, function()
 		if IsValid(self) then
 			local grenade = ents.Create("npc_grenade_frag")

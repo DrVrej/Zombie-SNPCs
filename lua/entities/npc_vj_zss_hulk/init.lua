@@ -5,7 +5,7 @@ include('shared.lua')
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/zombie/hulk.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = {"models/vj_zombies/hulk.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 600
 ENT.HullType = HULL_MEDIUM_TALL
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -15,7 +15,7 @@ ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1} -- Melee Attack Animations
 ENT.MeleeAttackDistance = 35 -- How close does it have to be until it attacks?
 ENT.MeleeAttackDamageDistance = 95 -- How far does the damage go?
-ENT.TimeUntilMeleeAttackDamage = 0.8 -- This counted in seconds | This calculates the time until it hits something
+ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 65
 ENT.SlowPlayerOnMeleeAttack = true -- If true, then the player will slow down
 ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100 -- Walking Speed when Slow Player is on
@@ -26,8 +26,7 @@ ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bl
 ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
 ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
-ENT.FootStepTimeRun = 0.4 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.4 -- Next foot step sound when it is walking
+ENT.DisableFootStepSoundTimer = true
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
 ENT.MeleeAttackKnockBack_Forward1 = 100 -- How far it will push you forward | First in math.random
 ENT.MeleeAttackKnockBack_Forward2 = 130 -- How far it will push you forward | Second in math.random
@@ -50,18 +49,31 @@ ENT.SoundTbl_Death = {"npc/zombie_poison/pz_die1.wav","npc/zombie_poison/pz_die2
 ENT.GeneralSoundPitch1 = 75
 ENT.GeneralSoundPitch2 = 80
 
--- Custom
-ENT.Zombie_ActFireWalk = -1 -- Uses an undefined animation
+ENT.FootStepSoundLevel = 80
+
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(18, 18, 90), Vector(-18, -18, 0))
 	self:SetSkin(math.random(0, 3))
-	self.Zombie_ActFireWalk = self:GetSequenceActivity(self:LookupSequence("FireWalk"))
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:CustomOnAcceptInput(key, activator, caller, data)
+	if key == "step" then
+		self:FootStepSoundCode()
+	elseif key == "melee" then
+		self:MeleeAttackCode()
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:TranslateActivity(act)
-	if self:IsOnFire() && (act == ACT_RUN or act == ACT_WALK) then
-		return self.Zombie_ActFireWalk
+	if act == ACT_RUN or act == ACT_WALK then
+		if self:IsOnFire() then
+			return ACT_WALK_ON_FIRE
+		elseif act == ACT_RUN && (self:GetMaxHealth() / 2) > self:Health() then -- Allow running if we are low health!
+			print("LOW HP")
+			return ACT_RUN
+		end
+		return ACT_WALK
 	end
 	return self.BaseClass.TranslateActivity(self, act)
 end

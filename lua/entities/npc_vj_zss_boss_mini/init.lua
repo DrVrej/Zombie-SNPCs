@@ -1,3 +1,4 @@
+include("entities/npc_vj_zss_slow/init.lua")
 AddCSLuaFile("shared.lua")
 include('shared.lua')
 /*-----------------------------------------------
@@ -5,27 +6,21 @@ include('shared.lua')
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/zombie/classic_gal_boss_mini2.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = {"models/vj_zombies/gal_boss_mini.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 500
-ENT.FootStepTimeRun = 0.8 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.8 -- Next foot step sound when it is walking
+
+local sdFootScuff = {"npc/zombie/foot_slide1.wav", "npc/zombie/foot_slide2.wav", "npc/zombie/foot_slide3.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnMeleeAttack_AfterChecks(hitEnt, isProp)
-	local curSeq = self:GetSequenceName(self:GetSequence())
-	if curSeq == "attackE" or curSeq == "attackF" then -- Heavier attacks
-		self.MeleeAttackDamage = 65
-	else
+function ENT:CustomOnAcceptInput(key, activator, caller, data)
+	if key == "step" then
+		self:FootStepSoundCode()
+	elseif key == "scuff" then
+		self:FootStepSoundCode(sdFootScuff)
+	elseif key == "melee" then
 		self.MeleeAttackDamage = 55
+		self:MeleeAttackCode()
+	elseif key == "melee_heavy" then
+		self.MeleeAttackDamage = 65
+		self:MeleeAttackCode()
 	end
-end
----------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:TranslateActivity(act)
-	if self:IsOnFire() then
-		if act == ACT_IDLE then
-			return ACT_IDLE_ON_FIRE
-		elseif act == ACT_RUN or act == ACT_WALK then
-			return ACT_WALK_ON_FIRE
-		end
-	end
-	return self.BaseClass.BaseClass.TranslateActivity(self, act)
 end
