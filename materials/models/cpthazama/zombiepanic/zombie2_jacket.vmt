@@ -1,0 +1,9 @@
+"ZP_VertexLitGeneric"
+{
+	"$basetexture" "models/cpthazama/zombiepanic/zombie2_jacket"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" 1
+	"$bumpmap" "models/cpthazama/zombiepanic/zombie2_jacket_nm"
+//	"$envmapcontrast" 1
+//	"$envmaptint" [1 0 0]
+}

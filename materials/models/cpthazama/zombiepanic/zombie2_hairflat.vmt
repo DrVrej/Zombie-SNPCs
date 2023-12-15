@@ -1,0 +1,5 @@
+"ZP_VertexLitGeneric"
+{
+	"$basetexture" "models/cpthazama/zombiepanic/zombie2_hairflat"
+	"$translucent" 1
+}

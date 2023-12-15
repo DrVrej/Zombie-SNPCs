@@ -1,0 +1,14 @@
+"ZP_VertexLitGeneric"
+{
+	"$basetexture" "models/cpthazama/zombiepanic/zombie5/diffuse"
+	"$model" "1"
+	"$translucent" "1"
+
+	"Proxies"
+	{
+		"ZombieVision"
+		{
+			"resultVar"	"$selfillumtint"
+		}
+	}
+}

@@ -1,0 +1,13 @@
+"ZP_VertexLitGeneric"
+{
+	"$basetexture" "models/cpthazama/zombiepanic/fleshandbrains"
+	"$bumpmap" "models/cpthazama/zombiepanic/fleshandbrains_normal"
+	"$phong"     "1"
+	"$phongexponent"   "60"
+	"$phongboost"   "4"
+	"$phongfresnelranges"   "[.05 .5 1]"
+	"$alphatest" 1
+	"$alpha" 1
+	"$nocull" 1
+	"$model" 1
+}

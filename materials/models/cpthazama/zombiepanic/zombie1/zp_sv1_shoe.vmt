@@ -1,0 +1,6 @@
+"ZP_VertexLitGeneric"
+{
+	"$basetexture" "models/cpthazama/zombiepanic/zombie1/zp_sv1_shoe"
+	"$surfaceprop" "flesh"
+
+}

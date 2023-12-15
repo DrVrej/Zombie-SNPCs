@@ -53,20 +53,20 @@ ENT.SoundTbl_Death = {"vj_zombies/fast/fzombie_die1.wav","vj_zombies/fast/fzombi
 function ENT:CustomOnPreInitialize()
 	if !self.Model then
 		-- Have to randomize it here soo all types spawn equally since some are only skins
-		local randZombie = math.random(1, 7)
-		if randZombie == 1 then
+		local randModel = math.random(1, 7)
+		if randModel == 1 then
 			self.Model = "models/vj_zombies/fast1.mdl"
-		elseif randZombie == 2 then
+		elseif randModel == 2 then
 			self.Model = "models/vj_zombies/fast2.mdl"
-		elseif randZombie == 3 then
+		elseif randModel == 3 then
 			self.Model = "models/vj_zombies/fast3.mdl"
-		elseif randZombie == 4 then
+		elseif randModel == 4 then
 			self.Model = "models/vj_zombies/fast4.mdl"
 			self:SetSkin(1)
-		elseif randZombie == 5 then
+		elseif randModel == 5 then
 			self.Model = "models/vj_zombies/fast4.mdl"
 			self:SetSkin(2)
-		elseif randZombie == 6 then
+		elseif randModel == 6 then
 			self.Model = "models/vj_zombies/fast4.mdl"
 			self:SetSkin(3)
 		else
@@ -79,7 +79,7 @@ function ENT:CustomOnInitialize()
 	self:SetCollisionBounds(Vector(13, 13, 50), Vector(-13, -13, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnAcceptInput(key, activator, caller, data) 
+function ENT:CustomOnAcceptInput(key, activator, caller, data)
 	if key == "step" then
 		self:FootStepSoundCode()
 	elseif key == "melee" then
@@ -89,8 +89,8 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:TranslateActivity(act)
 	if act == ACT_IDLE then
-		if !self:OnGround() then
-			return ACT_JUMP
+		if !self:OnGround() && !self:IsMoving() then
+			return ACT_GLIDE
 		elseif self:IsOnFire() then
 			return ACT_IDLE_ON_FIRE
 		end
