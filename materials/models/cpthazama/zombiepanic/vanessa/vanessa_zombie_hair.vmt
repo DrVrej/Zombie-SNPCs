@@ -1,4 +1,4 @@
-"ZP_VertexLitGeneric"
+"VertexLitGeneric"
 {
 	"$basetexture" "models/cpthazama/zombiepanic/vanessa/vanessa_zombie_hair"
 	"$nocull" "1"

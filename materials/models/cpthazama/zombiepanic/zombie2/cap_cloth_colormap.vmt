@@ -1,4 +1,4 @@
-"ZP_VertexLitGeneric"
+"VertexLitGeneric"
 {
 	"$basetexture" "models/cpthazama/zombiepanic/zombie2/cap_cloth_colormap"
 	"$surfaceprop" "flesh"

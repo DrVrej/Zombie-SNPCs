@@ -1,4 +1,4 @@
-"ZP_VertexLitGeneric"
+"VertexLitGeneric"
 {
 	"$basetexture" "models/cpthazama/zombiepanic/zombie1/zombie2_pants"
 	"$bumpmap" "models/cpthazama/zombiepanic/zombie1/zombie2_pants_nm"

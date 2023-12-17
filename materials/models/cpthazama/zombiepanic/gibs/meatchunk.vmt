@@ -1,4 +1,4 @@
-"ZP_VertexLitGeneric"
+"VertexLitGeneric"
 {
 	"$basetexture"	"models/cpthazama/zombiepanic/gibs/meatchunk"
 	"$bumpmap" "models/cpthazama/zombiepanic/gibs/meatchunk_normal"
