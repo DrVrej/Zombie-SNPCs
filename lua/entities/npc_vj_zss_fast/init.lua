@@ -1,5 +1,5 @@
 AddCSLuaFile("shared.lua")
-include('shared.lua')
+include("shared.lua")
 /*-----------------------------------------------
 	*** Copyright (c) 2012-2024 by DrVrej, All rights reserved. ***
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
@@ -28,7 +28,7 @@ ENT.LeapToMeleeDistance = 150 -- How close does it have to be until it uses mele
 ENT.TimeUntilLeapAttackDamage = 0.2 -- How much time until it runs the leap damage code?
 ENT.NextLeapAttackTime = 3 -- How much time until it can use a leap attack?
 ENT.NextAnyAttackTime_Leap = 0.4 -- How much time until it can use any attack again? | Counted in Seconds
-ENT.LeapAttackExtraTimers = {0.4,0.6,0.8,1} -- Extra leap attack timers | it will run the damage code after the given amount of seconds
+ENT.LeapAttackExtraTimers = {0.4, 0.6, 0.8, 1} -- Extra leap attack timers | it will run the damage code after the given amount of seconds
 ENT.TimeUntilLeapAttackVelocity = 0.2 -- How much time until it runs the velocity code?
 ENT.LeapAttackVelocityForward = 300 -- How much forward force should it apply?
 ENT.LeapAttackVelocityUp = 250 -- How much upward force should it apply?
