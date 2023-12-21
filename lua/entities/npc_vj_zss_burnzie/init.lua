@@ -52,15 +52,9 @@ function ENT:Controller_Initialize(ply, controlEnt)
 			if !self.VJCE_NPC:IsOnFire() then
 				self.VJCE_NPC:Ignite(99999)
 				self.VJCE_Player:PrintMessage(HUD_PRINTCENTER, "Igniting!")
-				if self.VJCE_NPC:GetIdealActivity() == ACT_IDLE then
-					self.VJCE_NPC:MaintainIdleAnimation(true)
-				end
 			else
 				self.VJCE_NPC:Extinguish()
 				self.VJCE_Player:PrintMessage(HUD_PRINTCENTER, "Extinguishing!")
-				if self.VJCE_NPC:GetIdealActivity() == ACT_IDLE then
-					self.VJCE_NPC:MaintainIdleAnimation(true)
-				end
 			end
 		end
 	end
@@ -84,9 +78,6 @@ function ENT:OnStateChange(oldState, newState)
 			self:Ignite(99999)
 		else
 			self:Extinguish()
-		end
-		if self:GetIdealActivity() == ACT_IDLE then
-			self:MaintainIdleAnimation(true)
 		end
 	end
 	self.BaseClass.OnStateChange(self, oldState, newState)
