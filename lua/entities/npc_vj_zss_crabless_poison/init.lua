@@ -15,22 +15,22 @@ ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1} -- Melee Attack Animations
 ENT.MeleeAttackDistance = 32 -- How close does it have to be until it attacks?
 ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go?
-ENT.TimeUntilMeleeAttackDamage = 1 -- This counted in seconds | This calculates the time until it hits something
+ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 40
 ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
 ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bleed? | 1 = always
 ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
 ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
-ENT.FootStepTimeRun = 0.5 -- Next foot step sound when it is running
-ENT.FootStepTimeWalk = 0.5 -- Next foot step sound when it is walking
+ENT.DisableFootStepSoundTimer = true
+ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Sound File Paths ====== --
 -- Leave blank if you don't want any sounds to play
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
 ENT.SoundTbl_Breath = {"npc/zombie_poison/pz_breathe_loop1.wav"}
 ENT.SoundTbl_Idle = {"npc/zombie_poison/pz_idle2.wav","npc/zombie_poison/pz_idle3.wav","npc/zombie_poison/pz_idle4.wav"}
-ENT.SoundTbl_Alert = {"npc/zombie_poison/pz_alert1.wav","npc/zombie_poison/pz_alert2.wav","npc/zombie_poison/pz_warn1.wav","npc/zombie_poison/pz_warn2.wav"}
-ENT.SoundTbl_MeleeAttack = {"npc/zombie/claw_strike1.wav","npc/zombie/claw_strike2.wav","npc/zombie/claw_strike3.wav"}
+ENT.SoundTbl_Alert = {"npc/zombie_poison/pz_alert1.wav","npc/zombie_poison/pz_alert2.wav"}
+ENT.SoundTbl_BeforeMeleeAttack = {"npc/zombie_poison/pz_warn1.wav","npc/zombie_poison/pz_warn2.wav"}
 ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav","vj_zombies/slow/miss2.wav","vj_zombies/slow/miss3.wav","vj_zombies/slow/miss4.wav"}
 ENT.SoundTbl_Pain = {"npc/zombie_poison/pz_pain1.wav","npc/zombie_poison/pz_pain2.wav","npc/zombie_poison/pz_pain3.wav"}
 ENT.SoundTbl_Death = {"npc/zombie_poison/pz_die1.wav","npc/zombie_poison/pz_die2.wav"}
@@ -51,6 +51,17 @@ function ENT:TranslateActivity(act)
 		return self.Zombie_ActFireWalk
 	end
 	return self.BaseClass.TranslateActivity(self, act)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+local getEventName = util.GetAnimEventNameByID
+--
+function ENT:CustomOnHandleAnimEvent(ev, evTime, evCycle, evType, evOptions)
+	local eventName = getEventName(ev)
+	if eventName == "AE_ZOMBIE_STEP_LEFT" or eventName == "AE_ZOMBIE_STEP_RIGHT" then
+		self:FootStepSoundCode()
+	elseif eventName == "AE_ZOMBIE_ATTACK_RIGHT" then
+		self:MeleeAttackCode()
+	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnAlert()
