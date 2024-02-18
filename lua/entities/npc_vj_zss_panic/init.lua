@@ -15,7 +15,7 @@ ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = {"vjges_attack1", "vjges_attack2", "vjges_attack3", "vjges_push"} -- Melee Attack Animations
 ENT.MeleeAttackAnimationAllowOtherTasks = true -- If set to true, the animation will not stop other tasks from playing, such as chasing | Useful for gesture attacks!
 ENT.MeleeAttackDistance = 32 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go?
+ENT.MeleeAttackDamageDistance = 65 -- How far does the damage go?
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 15
 ENT.SlowPlayerOnMeleeAttack = true -- If true, then the player will slow down
@@ -75,6 +75,7 @@ function ENT:CustomOnInitialize()
 		self.SoundTbl_BeforeMeleeAttack = sdCarrier_BeforeMelee
 		self.SoundTbl_Pain = sdCarrier_Pain
 		self.SoundTbl_Death = sdCarrier_Death
+		self:SetHealth(self:Health() + 40)
 	elseif myModel == "models/vj_zombies/panic_jessica.mdl" or myModel == "models/vj_zombies/panic_lea.mdl" or myModel == "models/vj_zombies/panic_vanessa.mdl" then
 		self.Zombie_Type = ZOMBIE_TYPE_FEMALE
 		self.SoundTbl_Idle = sdFemale_Idle
@@ -105,8 +106,11 @@ function ENT:CustomOnAcceptInput(key, activator, caller, data)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:TranslateActivity(act)
-	if act == ACT_GLIDE then -- Because there is no animation, so just use idle!
+	if act == ACT_GLIDE then -- Because there is no jumping animation, so just use idle!
 		return ACT_IDLE
+	elseif act == ACT_RUN && self.Zombie_Type == ZOMBIE_TYPE_CARRIER && self.LatestEnemyDistance < 400 && IsValid(self:GetEnemy()) then -- Carriers can go berserk when close to enemy!
+		//VJ.EmitSound(self, "vj_zombies/panic/Activate.wav", 50)
+		return ACT_SPRINT
 	end
 	return self.BaseClass.TranslateActivity(self, act)
 end
