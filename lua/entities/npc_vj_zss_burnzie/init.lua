@@ -5,7 +5,7 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = {"models/vj_zombies/burnzie.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
+ENT.Model = "models/vj_zombies/burnzie.mdl" -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
 ENT.StartHealth = 200
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -14,9 +14,9 @@ ENT.BloodColor = "Red" -- The blood type, this will determine what it should use
 ENT.Immune_Fire = true -- Immune to fire damage
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
-ENT.AnimTbl_MeleeAttack = {ACT_MELEE_ATTACK1} -- Melee Attack Animations
-ENT.MeleeAttackDistance = 32 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go?
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
+ENT.MeleeAttackDistance = 32 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 20
 
@@ -49,11 +49,12 @@ function ENT:Controller_Initialize(ply, controlEnt)
 	
 	function controlEnt:CustomOnKeyBindPressed(key)
 		if key == IN_JUMP then
-			if !self.VJCE_NPC:IsOnFire() then
-				self.VJCE_NPC:Ignite(99999)
+			local npc = self.VJCE_NPC
+			if !npc:IsOnFire() then
+				npc:Ignite(99999)
 				self.VJCE_Player:PrintMessage(HUD_PRINTCENTER, "Igniting!")
 			else
-				self.VJCE_NPC:Extinguish()
+				npc:Extinguish()
 				self.VJCE_Player:PrintMessage(HUD_PRINTCENTER, "Extinguishing!")
 			end
 		end

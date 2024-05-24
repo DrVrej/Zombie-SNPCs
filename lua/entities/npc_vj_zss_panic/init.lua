@@ -14,8 +14,8 @@ ENT.BloodColor = "Red" -- The blood type, this will determine what it should use
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = {"vjges_attack1", "vjges_attack2", "vjges_attack3", "vjges_push"} -- Melee Attack Animations
 ENT.MeleeAttackAnimationAllowOtherTasks = true -- If set to true, the animation will not stop other tasks from playing, such as chasing | Useful for gesture attacks!
-ENT.MeleeAttackDistance = 32 -- How close does it have to be until it attacks?
-ENT.MeleeAttackDamageDistance = 65 -- How far does the damage go?
+ENT.MeleeAttackDistance = 32 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 65 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
 ENT.MeleeAttackDamage = 15
 ENT.SlowPlayerOnMeleeAttack = true -- If true, then the player will slow down
