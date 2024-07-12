@@ -47,7 +47,7 @@ function ENT:CustomOnThink_AIEnabled()
 		self:VJ_ACT_PLAYACTIVITY("vjseq_releasecrab", true, false, false)
 		ParticleEffect("aurora_shockwave_debris", myPos, defAng, nil)
 		ParticleEffect("aurora_shockwave", myPos, defAng, nil)
-		VJ_EmitSound(self, "npc/zombie_poison/pz_call1.wav", 90, 80)
+		VJ.EmitSound(self, "npc/zombie_poison/pz_call1.wav", 90, 80)
 		
 		local mini1 = ents.Create("npc_vj_zss_boss_mini")
 		mini1:SetPos(myPos + self:GetRight()*60)
