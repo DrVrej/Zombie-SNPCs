@@ -30,8 +30,6 @@ ENT.NextLeapAttackTime = 3 -- How much time until it can use a leap attack?
 ENT.NextAnyAttackTime_Leap = 0.4 -- How much time until it can use any attack again? | Counted in Seconds
 ENT.LeapAttackExtraTimers = {0.4, 0.6, 0.8, 1} -- Extra leap attack timers | it will run the damage code after the given amount of seconds
 ENT.TimeUntilLeapAttackVelocity = 0.2 -- How much time until it runs the velocity code?
-ENT.LeapAttackVelocityForward = 300 -- How much forward force should it apply?
-ENT.LeapAttackVelocityUp = 250 -- How much upward force should it apply?
 ENT.LeapAttackDamage = 15
 ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
 ENT.DisableFootStepSoundTimer = true
@@ -98,4 +96,9 @@ function ENT:TranslateActivity(act)
 		return ACT_CLIMB_UP
 	end
 	return self.BaseClass.TranslateActivity(self, act)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:GetLeapAttackVelocity()
+	local ene = self:GetEnemy()
+	return VJ.CalculateTrajectory(self, ene, "Curve", self:GetPos() + self:OBBCenter(), ene:GetPos() + ene:OBBCenter(), 25) + self:GetForward() * 80
 end
