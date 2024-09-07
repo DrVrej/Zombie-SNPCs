@@ -24,8 +24,7 @@ ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
 ENT.SoundTbl_Idle = {"npc/zombie/zombie_voice_idle1.wav","npc/zombie/zombie_voice_idle2.wav","npc/zombie/zombie_voice_idle3.wav","npc/zombie/zombie_voice_idle4.wav","npc/zombie/zombie_voice_idle5.wav","npc/zombie/zombie_voice_idle6.wav"}
 ENT.SoundTbl_Alert = {"npc/zombie/zombie_alert1.wav","npc/zombie/zombie_alert2.wav","npc/zombie/zombie_alert3.wav"}

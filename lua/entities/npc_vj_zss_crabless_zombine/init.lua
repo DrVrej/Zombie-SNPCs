@@ -32,8 +32,7 @@ ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attac
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- If it uses normal based animation, use this
 ENT.HitGroupFlinching_Values = {{HitGroup = {HITGROUP_HEAD}, Animation = {ACT_FLINCH_HEAD}}, {HitGroup = {HITGROUP_LEFTARM}, Animation = {ACT_FLINCH_LEFTARM}}, {HitGroup = {HITGROUP_RIGHTARM}, Animation = {ACT_FLINCH_RIGHTARM}}, {HitGroup = {HITGROUP_LEFTLEG}, Animation = {ACT_FLINCH_LEFTLEG}}, {HitGroup = {HITGROUP_RIGHTLEG}, Animation = {ACT_FLINCH_RIGHTLEG}}}
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_zombies/zombine/gear1.wav","vj_zombies/zombine/gear2.wav","vj_zombies/zombine/gear3.wav"}
 ENT.SoundTbl_Idle = {"vj_zombies/zombine/idle1.wav","vj_zombies/zombine/idle2.wav","vj_zombies/zombine/idle3.wav","vj_zombies/zombine/idle4.wav","vj_zombies/zombine/idle5.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/zombine/alert1.wav","vj_zombies/zombine/alert2.wav","vj_zombies/zombine/alert3.wav","vj_zombies/zombine/alert4.wav","vj_zombies/zombine/alert5.wav","vj_zombies/zombine/alert6.wav"}

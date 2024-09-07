@@ -20,8 +20,7 @@ ENT.NextAnyAttackTime_Melee = 0.2 -- How much time until it can use any attack a
 ENT.MeleeAttackDamage = 20
 ENT.PushProps = false -- True = Pushes props (The ones in the code only!)
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_Idle = {"vj_zombies/special/zmisc_idle1.wav","vj_zombies/special/zmisc_idle2.wav","vj_zombies/special/zmisc_idle3.wav","vj_zombies/special/zmisc_idle4.wav","vj_zombies/special/zmisc_idle5.wav","vj_zombies/special/zmisc_idle6.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/special/zmisc_alert1.wav","vj_zombies/special/zmisc_alert2.wav"}
 ENT.SoundTbl_MeleeAttackExtra = {"vj_zombies/special/bite1.wav","vj_zombies/special/bite2.wav","vj_zombies/special/bite3.wav","vj_zombies/special/bite4.wav"}

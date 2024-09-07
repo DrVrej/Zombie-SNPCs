@@ -29,8 +29,7 @@ ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 ENT.GibOnDeathDamagesTable = {"All"}
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav", "npc/zombie/foot2.wav", "npc/zombie/foot3.wav"}
 ENT.SoundTbl_MeleeAttackExtra = {"vj_zombies/panic/Z_Hit-01.wav", "vj_zombies/panic/Z_Hit-02.wav", "vj_zombies/panic/Z_Hit-03.wav", "vj_zombies/panic/Z_Hit-04.wav", "vj_zombies/panic/Z_Hit-05.wav", "vj_zombies/panic/Z_Hit-06.wav"}
 ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/panic/z-swipe-1.wav", "vj_zombies/panic/z-swipe-2.wav", "vj_zombies/panic/z-swipe-3.wav", "vj_zombies/panic/z-swipe-4.wav", "vj_zombies/panic/z-swipe-5.wav", "vj_zombies/panic/z-swipe-6.wav"}

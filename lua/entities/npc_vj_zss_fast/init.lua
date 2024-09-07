@@ -34,8 +34,7 @@ ENT.LeapAttackDamage = 15
 ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound File Paths ====== --
--- Leave blank if you don't want any sounds to play
+	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
 ENT.SoundTbl_Idle = {"vj_zombies/fast/fzombie_idle1.wav","vj_zombies/fast/fzombie_idle2.wav","vj_zombies/fast/fzombie_idle3.wav","vj_zombies/fast/fzombie_idle4.wav","vj_zombies/fast/fzombie_idle5.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/fast/fzombie_alert1.wav","vj_zombies/fast/fzombie_alert2.wav","vj_zombies/fast/fzombie_alert3.wav"}
