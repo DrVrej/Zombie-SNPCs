@@ -28,10 +28,6 @@ ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 ENT.DisableFootStepSoundTimer = true
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
-ENT.MeleeAttackKnockBack_Forward1 = 100 -- How far it will push you forward | First in math.random
-ENT.MeleeAttackKnockBack_Forward2 = 130 -- How far it will push you forward | Second in math.random
-ENT.MeleeAttackKnockBack_Up1 = 250 -- How far it will push you up | First in math.random
-ENT.MeleeAttackKnockBack_Up2 = 260 -- How far it will push you up | Second in math.random
 ENT.PropAP_MaxSize = 2 -- This is a scale number for the max size it can attack/push | x < 1  = Smaller props & x > 1  = Larger props | Default base value: 1
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
@@ -78,4 +74,8 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:CustomOnFootStepSound(moveType, sdFile)
 	util.ScreenShake(self:GetPos(), 2, 5, 0.5, 250)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:MeleeAttackKnockbackVelocity(hitEnt)
+	return self:GetForward() * math.random(100, 130) + self:GetUp() * math.random(250, 260)
 end
