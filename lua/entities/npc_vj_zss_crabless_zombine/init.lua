@@ -30,7 +30,7 @@ ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
 ENT.HitGroupFlinching_Values = {{HitGroup = {HITGROUP_HEAD}, Animation = {ACT_FLINCH_HEAD}}, {HitGroup = {HITGROUP_LEFTARM}, Animation = {ACT_FLINCH_LEFTARM}}, {HitGroup = {HITGROUP_RIGHTARM}, Animation = {ACT_FLINCH_RIGHTARM}}, {HitGroup = {HITGROUP_LEFTLEG}, Animation = {ACT_FLINCH_LEFTLEG}}, {HitGroup = {HITGROUP_RIGHTLEG}, Animation = {ACT_FLINCH_RIGHTLEG}}}
 	-- ====== Sound Paths ====== --
 ENT.SoundTbl_FootStep = {"vj_zombies/zombine/gear1.wav","vj_zombies/zombine/gear2.wav","vj_zombies/zombine/gear3.wav"}
@@ -47,11 +47,11 @@ ENT.GeneralSoundPitch2 = 100
 -- Custom
 ENT.Zombie_GrenadeOut = false -- Can only do it once!
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(13, 13, 60), Vector(-13, -13, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnAcceptInput(key, activator, caller, data)
+function ENT:OnInput(key, activator, caller, data)
 	//print(key)
 	if key == "step" then
 		self:FootStepSoundCode()
@@ -90,7 +90,7 @@ function ENT:TranslateActivity(act)
 	return self.BaseClass.TranslateActivity(self, act)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnThink_AIEnabled()
+function ENT:OnThinkActive()
 	-- Pull out the grenade
 	if self.Zombie_GrenadeOut == false then
 		if self.VJ_IsBeingControlled == true && self.VJ_TheController:KeyDown(IN_JUMP) then
@@ -120,20 +120,22 @@ function ENT:Zombie_CreateGrenade()
 	end)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnKilled(dmginfo, hitgroup)
-	local grenade = self.Zombie_Grenade
-	if IsValid(grenade) then
-		local att = self:GetAttachment(self:LookupAttachment("grenade_attachment"))
-		grenade:SetOwner(NULL)
-		grenade:SetParent(NULL)
-		grenade:Fire("ClearParent")
-		grenade:SetMoveType(MOVETYPE_VPHYSICS)
-		grenade:SetPos(att.Pos)
-		grenade:SetAngles(att.Ang)
-		local phys = grenade:GetPhysicsObject()
-		if IsValid(phys) then
-			phys:EnableGravity(true)
-			phys:Wake()
+function ENT:OnDeath(dmginfo, hitgroup, status)
+	if status == "Finish" then
+		local grenade = self.Zombie_Grenade
+		if IsValid(grenade) then
+			local att = self:GetAttachment(self:LookupAttachment("grenade_attachment"))
+			grenade:SetOwner(NULL)
+			grenade:SetParent(NULL)
+			grenade:Fire("ClearParent")
+			grenade:SetMoveType(MOVETYPE_VPHYSICS)
+			grenade:SetPos(att.Pos)
+			grenade:SetAngles(att.Ang)
+			local phys = grenade:GetPhysicsObject()
+			if IsValid(phys) then
+				phys:EnableGravity(true)
+				phys:Wake()
+			end
 		end
 	end
 end

@@ -27,7 +27,7 @@ ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 ENT.DisableFootStepSoundTimer = true
 	-- ====== Flinching Code ====== --
 ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- If it uses normal based animation, use this
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_flinch_chest"}},
@@ -49,7 +49,7 @@ local sdFootScuff = {"npc/zombie/foot_slide1.wav", "npc/zombie/foot_slide2.wav",
 ---------------------------------------------------------------------------------------------------------------------------------------------
 local defModels = {"models/vj_zombies/slow1.mdl", "models/vj_zombies/slow2.mdl", "models/vj_zombies/slow3.mdl", "models/vj_zombies/slow4.mdl", "models/vj_zombies/slow5.mdl", "models/vj_zombies/slow6.mdl", "models/vj_zombies/slow7.mdl", "models/vj_zombies/slow8.mdl", "models/vj_zombies/slow9.mdl", "models/vj_zombies/slow10.mdl", "models/vj_zombies/slow11.mdl", "models/vj_zombies/slow12.mdl"}
 --
-function ENT:CustomOnPreInitialize()
+function ENT:PreInit()
 	-- Allows child classes to change the model such Zombie Mini Boss
 	if !self.Model then
 		self.Model = defModels
@@ -59,7 +59,7 @@ end
 -- "vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "vjseq_attackd", "vjseq_attacke" ,"vjseq_attackf"   |   Unused (Faster): "vjseq_swatrightmid", "vjseq_swatleftmid"
 -- "vjseq_attacke" ,"vjseq_attackf"   |   Unused (Faster): "vjseq_swatleftlow", "vjseq_swatrightlow"
 --
-function ENT:CustomOnAcceptInput(key, activator, caller, data)
+function ENT:OnInput(key, activator, caller, data)
 	if key == "step" then
 		self:FootStepSoundCode()
 	elseif key == "scuff" then

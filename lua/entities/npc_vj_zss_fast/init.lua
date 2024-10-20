@@ -11,7 +11,7 @@ ENT.HullType = HULL_HUMAN
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"} -- NPCs with the same class with be allied to each other
 ENT.BloodColor = "Red" -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1 -- Melee Attack Animations
+ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDistance = 32 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
@@ -22,7 +22,7 @@ ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on eve
 ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
 ENT.HasLeapAttack = true -- Can this NPC leap attack?
-ENT.AnimTbl_LeapAttack = {ACT_JUMP} -- Melee Attack Animations
+ENT.AnimTbl_LeapAttack = {ACT_JUMP}
 ENT.LeapDistance = 400 -- The max distance that the NPC can leap from
 ENT.LeapToMeleeDistance = 150 -- How close does it have to be until it uses melee?
 ENT.TimeUntilLeapAttackDamage = 0.2 -- How much time until it runs the leap damage code?
@@ -47,7 +47,7 @@ ENT.SoundTbl_Pain = {"vj_zombies/fast/fzombie_pain1.wav","vj_zombies/fast/fzombi
 ENT.SoundTbl_Death = {"vj_zombies/fast/fzombie_die1.wav","vj_zombies/fast/fzombie_die2.wav"}
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnPreInitialize()
+function ENT:PreInit()
 	if !self.Model then
 		-- Have to randomize it here soo all types spawn equally since some are only skins
 		local randModel = math.random(1, 7)
@@ -72,11 +72,11 @@ function ENT:CustomOnPreInitialize()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnInitialize()
+function ENT:Init()
 	self:SetCollisionBounds(Vector(13, 13, 50), Vector(-13, -13, 0))
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnAcceptInput(key, activator, caller, data)
+function ENT:OnInput(key, activator, caller, data)
 	if key == "step" then
 		self:FootStepSoundCode()
 	elseif key == "melee" then
