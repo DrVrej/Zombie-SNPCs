@@ -46,7 +46,7 @@ end
 function ENT:Controller_Initialize(ply, controlEnt)
 	ply:ChatPrint("JUMP: Ignite or Extinguish the Fire")
 	
-	function controlEnt:CustomOnKeyBindPressed(key)
+	function controlEnt:OnKeyBindPressed(key)
 		if key == IN_JUMP then
 			local npc = self.VJCE_NPC
 			if !npc:IsOnFire() then
