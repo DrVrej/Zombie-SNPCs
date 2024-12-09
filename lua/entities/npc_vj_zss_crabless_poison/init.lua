@@ -65,5 +65,5 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnAlert(ent)
 	if self.VJ_IsBeingControlled == true then return end
-	self:VJ_ACT_PLAYACTIVITY("throwwarning", true, false, true)
+	self:PlayAnim("throwwarning", true, false, true)
 end

@@ -44,7 +44,7 @@ function ENT:OnThinkActive()
 		local myPos = self:GetPos()
 		local myAng = self:GetAngles()
 		
-		self:VJ_ACT_PLAYACTIVITY("vjseq_releasecrab", true, false, false)
+		self:PlayAnim("vjseq_releasecrab", true, false, false)
 		ParticleEffect("aurora_shockwave_debris", myPos, defAng, nil)
 		ParticleEffect("aurora_shockwave", myPos, defAng, nil)
 		VJ.EmitSound(self, "npc/zombie_poison/pz_call1.wav", 90, 80)
@@ -53,7 +53,7 @@ function ENT:OnThinkActive()
 		mini1:SetPos(myPos + self:GetRight()*60)
 		mini1:SetAngles(myAng)
 		mini1:Spawn()
-		mini1:VJ_ACT_PLAYACTIVITY("vjseq_canal5aattack", true, 0.6, true, 0, {SequenceDuration=0.6})
+		mini1:PlayAnim("vjseq_canal5aattack", true, 0.6, true, 0, {SequenceDuration=0.6})
 		mini1:SetOwner(self)
 		self.MiniBoss1 = mini1
 		
@@ -61,7 +61,7 @@ function ENT:OnThinkActive()
 		mini2:SetPos(myPos + self:GetRight()*-60)
 		mini2:SetAngles(myAng)
 		mini2:Spawn()
-		mini2:VJ_ACT_PLAYACTIVITY("vjseq_canal5aattack", true, 0.6, true, 0, {SequenceDuration=0.6})
+		mini2:PlayAnim("vjseq_canal5aattack", true, 0.6, true, 0, {SequenceDuration=0.6})
 		mini2:SetOwner(self)
 		self.MiniBoss2 = mini2
 		

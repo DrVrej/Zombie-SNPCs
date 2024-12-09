@@ -104,7 +104,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Zombie_CreateGrenade()
 	self.Zombie_GrenadeOut = true
-	self:VJ_ACT_PLAYACTIVITY(ACT_SLAM_DETONATOR_DRAW, true, false, true)
+	self:PlayAnim(ACT_SLAM_DETONATOR_DRAW, true, false, true)
 	timer.Simple(0.6, function()
 		if IsValid(self) then
 			local grenade = ents.Create("npc_grenade_frag")
