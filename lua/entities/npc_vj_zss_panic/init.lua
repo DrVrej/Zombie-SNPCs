@@ -26,7 +26,7 @@ ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bl
 ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
 ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
-ENT.GibOnDeathDamagesTable = {"All"}
+ENT.GibOnDeathFilter = false
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Sound Paths ====== --
@@ -113,7 +113,7 @@ function ENT:TranslateActivity(act)
 	return self.BaseClass.TranslateActivity(self, act)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
+function ENT:HandleGibOnDeath(dmginfo, hitgroup)
 	if hitgroup == HITGROUP_HEAD && dmginfo:GetDamageForce():Length2D() > 800 then
 		self:CreateGibEntity("obj_vj_gib", "UseHuman_Small", {Pos = self:GetAttachment(self:LookupAttachment("anim_attachment_head")).Pos})
 		if self.Zombie_Type == ZOMBIE_TYPE_MALE then -- Only males have a single bodygroup set
@@ -122,6 +122,6 @@ function ENT:SetUpGibesOnDeath(dmginfo, hitgroup)
 			self:SetBodygroup(0, 1) -- Have to set this otherwise the gibbed heads will NOT show up!
 			self:SetBodygroup(1, math.random(1, 3))
 		end
-		return true, {DeathAnim = true, AllowCorpse = true}
+		return true, {AllowCorpse = true, AllowAnim = true}
 	end
 end
