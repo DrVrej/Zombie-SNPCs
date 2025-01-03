@@ -45,8 +45,7 @@ function ENT:OnThinkActive()
 		local myAng = self:GetAngles()
 		
 		self:PlayAnim("vjseq_releasecrab", true, false, false)
-		ParticleEffect("aurora_shockwave_debris", myPos, defAng, nil)
-		ParticleEffect("aurora_shockwave", myPos, defAng, nil)
+		ParticleEffect("vj_aurora_shockwave", myPos, defAng, nil)
 		VJ.EmitSound(self, "npc/zombie_poison/pz_call1.wav", 90, 80)
 		
 		local mini1 = ents.Create("npc_vj_zss_boss_mini")
