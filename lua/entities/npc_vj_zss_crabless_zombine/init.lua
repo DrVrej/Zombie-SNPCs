@@ -1,7 +1,7 @@
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 /*-----------------------------------------------
-	*** Copyright (c) 2012-2024 by DrVrej, All rights reserved. ***
+	*** Copyright (c) 2012-2025 by DrVrej, All rights reserved. ***
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
@@ -114,7 +114,7 @@ function ENT:Zombie_CreateGrenade()
 			grenade:Spawn()
 			grenade:Activate()
 			grenade:Input("SetTimer", self, self, 3)
-			grenade.VJTag_IsPickupable = false -- So humans won't pick it up
+			grenade.VJ_ID_Grabbable = false -- So humans won't pick it up
 			self.Zombie_Grenade = grenade
 		end
 	end)
