@@ -11,12 +11,14 @@ ENT.HullType = HULL_WIDE_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"} -- NPCs with the same class with be allied to each other
 ENT.BloodColor = VJ.BLOOD_COLOR_RED -- The blood type, this will determine what it should use (decal, particle, etc.)
+
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK2
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 35
 ENT.MeleeAttackDistance = 30 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
 ENT.MeleeAttackDamageDistance = 70 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageAngleRadius = 180 -- We need this because its eye position ends up rotating too much on melee!
 ENT.SlowPlayerOnMeleeAttack = true -- If true, then the player will slow down
 ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100 -- Walking Speed when Slow Player is on
 ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100 -- Running Speed when Slow Player is on
@@ -26,6 +28,7 @@ ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bl
 ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
 ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
 ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
+
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
 	-- ====== Flinching Code ====== --
@@ -92,11 +95,13 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnThinkActive()
 	-- Pull out the grenade
-	if self.Zombie_GrenadeOut == false then
-		if self.VJ_IsBeingControlled == true && self.VJ_TheController:KeyDown(IN_JUMP) then
-			self.VJ_TheController:PrintMessage(HUD_PRINTCENTER, "Pulling Grenade Out!")
-			self:Zombie_CreateGrenade()
-		elseif self.VJ_IsBeingControlled == false && IsValid(self:GetEnemy()) && self.LatestEnemyDistance <= 256 && self:Health() <= 40 then
+	if !self.Zombie_GrenadeOut then
+		if self.VJ_IsBeingControlled then
+			if  self.VJ_TheController:KeyDown(IN_JUMP) then
+				self.VJ_TheController:PrintMessage(HUD_PRINTCENTER, "Pulling Grenade Out!")
+				self:Zombie_CreateGrenade()
+			end
+		elseif IsValid(self:GetEnemy()) && self.LatestEnemyDistance <= 256 && self:Health() <= 40 then
 			self:Zombie_CreateGrenade()
 		end
 	end

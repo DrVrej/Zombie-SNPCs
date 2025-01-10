@@ -64,7 +64,8 @@ function ENT:TranslateActivity(act)
 	if act == ACT_RUN or act == ACT_WALK then
 		if self:IsOnFire() then
 			return ACT_WALK_ON_FIRE
-		elseif act == ACT_RUN && (self:GetMaxHealth() / 2) > self:Health() then -- Allow running if we are low health!
+		-- Run if we are half health
+		elseif act == ACT_RUN && (self:GetMaxHealth() / 2) > self:Health() then
 			return ACT_RUN
 		end
 		return ACT_WALK

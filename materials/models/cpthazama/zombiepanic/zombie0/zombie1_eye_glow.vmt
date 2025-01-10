@@ -5,6 +5,6 @@
 	"$surfaceprop" "flesh"
 
 	"$envmapcontrast" 2
-	"$envmaptint" [.75 .25 0]
-	"$selfillum" 1 
+	"$envmaptint" "[.75 .25 0]"
+	"$selfillum" 1
 }
