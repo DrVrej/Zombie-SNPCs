@@ -22,9 +22,9 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:OnInput(key, activator, caller, data)
 	if key == "step" then
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	elseif key == "scuff" then
-		self:FootStepSoundCode(sdFootScuff)
+		self:PlayFootstepSound(sdFootScuff)
 	elseif key == "melee" then
 		self.MeleeAttackDamage = 70
 		self:MeleeAttackCode()

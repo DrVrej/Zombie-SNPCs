@@ -9,7 +9,7 @@ ENT.Model = "models/vj_zombies/zombine.mdl" -- Model(s) to spawn with | Picks a 
 ENT.StartHealth = 200
 ENT.HullType = HULL_WIDE_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"} -- NPCs with the same class with be allied to each other
+ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
@@ -57,7 +57,7 @@ end
 function ENT:OnInput(key, activator, caller, data)
 	//print(key)
 	if key == "step" then
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	elseif key == "melee" then
 		self:MeleeAttackCode()
 	end

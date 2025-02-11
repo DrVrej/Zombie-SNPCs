@@ -9,7 +9,7 @@ ENT.Model = "models/zombie/classic_torso.mdl" -- Model(s) to spawn with | Picks 
 ENT.StartHealth = 60
 ENT.HullType = HULL_TINY
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"} -- NPCs with the same class with be allied to each other
+ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
@@ -45,7 +45,7 @@ local getEventName = util.GetAnimEventNameByID
 function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_ZOMBIE_STEP_LEFT" or eventName == "AE_ZOMBIE_STEP_RIGHT" then
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	elseif eventName == "AE_ZOMBIE_ATTACK_LEFT" then
 		self:MeleeAttackCode()
 	end

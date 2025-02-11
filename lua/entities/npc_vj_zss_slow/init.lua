@@ -8,7 +8,7 @@ include("shared.lua")
 ENT.StartHealth = 100
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
-ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"} -- NPCs with the same class with be allied to each other
+ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 ENT.HasMeleeAttack = true -- Can this NPC melee attack?
 ENT.AnimTbl_MeleeAttack = {"vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "vjseq_attackd", "vjseq_attacke" ,"vjseq_attackf"}
@@ -61,9 +61,9 @@ end
 --
 function ENT:OnInput(key, activator, caller, data)
 	if key == "step" then
-		self:FootStepSoundCode()
+		self:PlayFootstepSound()
 	elseif key == "scuff" then
-		self:FootStepSoundCode(sdFootScuff)
+		self:PlayFootstepSound(sdFootScuff)
 	elseif key == "melee" then
 		self.MeleeAttackDamage = 20
 		self:MeleeAttackCode()
