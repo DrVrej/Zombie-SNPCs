@@ -6,13 +6,12 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_zombies/gal_boss.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_zombies/gal_boss.mdl"
 ENT.StartHealth = 850
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.MeleeAttackDamageDistance = 85
 
 -- Custom
 ENT.ZBoss_NextMiniBossSpawnT = 0
-ENT.ZBoss_LastAnimSet = 0 -- 0 = Regular | 1 = On fire
 
 local sdFootScuff = {"npc/zombie/foot_slide1.wav", "npc/zombie/foot_slide2.wav", "npc/zombie/foot_slide3.wav"}
 ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -27,10 +26,10 @@ function ENT:OnInput(key, activator, caller, data)
 		self:PlayFootstepSound(sdFootScuff)
 	elseif key == "melee" then
 		self.MeleeAttackDamage = 70
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	elseif key == "melee_heavy" then
 		self.MeleeAttackDamage = 80
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

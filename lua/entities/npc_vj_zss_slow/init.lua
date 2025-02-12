@@ -10,24 +10,24 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
-ENT.AnimTbl_MeleeAttack = {"vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "vjseq_attackd", "vjseq_attacke" ,"vjseq_attackf"}
-ENT.MeleeAttackDistance = 32 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 65 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
+ENT.HasMeleeAttack = true
+ENT.AnimTbl_MeleeAttack = {"vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "vjseq_attackd", "vjseq_attacke", "vjseq_attackf"}
+ENT.MeleeAttackDistance = 32
+ENT.MeleeAttackDamageDistance = 65
 ENT.TimeUntilMeleeAttackDamage = false
-ENT.SlowPlayerOnMeleeAttack = true -- If true, then the player will slow down
-ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100 -- Walking Speed when Slow Player is on
-ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100 -- Running Speed when Slow Player is on
-ENT.SlowPlayerOnMeleeAttackTime = 5 -- How much time until player's Speed resets
-ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
-ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bleed? | 1 = always
-ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
-ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
-ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
+ENT.SlowPlayerOnMeleeAttack = true
+ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100
+ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100
+ENT.SlowPlayerOnMeleeAttackTime = 5
+ENT.MeleeAttackBleedEnemy = true
+ENT.MeleeAttackBleedEnemyChance = 3
+ENT.MeleeAttackBleedEnemyDamage = 1
+ENT.MeleeAttackBleedEnemyTime = 1
+ENT.MeleeAttackBleedEnemyReps = 4
 ENT.DisableFootStepSoundTimer = true
-	-- ====== Flinching Code ====== --
-ENT.CanFlinch = 1 -- 0 = Don't flinch | 1 = Flinch at any damage | 2 = Flinch only from certain damages
-ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS -- The regular flinch animations to play
+
+ENT.CanFlinch = 1
+ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_flinch_chest"}},
@@ -36,7 +36,7 @@ ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_LEFTLEG}, Animation = {ACT_FLINCH_LEFTLEG}},
 	{HitGroup = {HITGROUP_RIGHTLEG}, Animation = {ACT_FLINCH_RIGHTLEG}}
 }
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
 ENT.SoundTbl_Idle = {"vj_zombies/slow/zombie_idle1.wav","vj_zombies/slow/zombie_idle2.wav","vj_zombies/slow/zombie_idle3.wav","vj_zombies/slow/zombie_idle4.wav","vj_zombies/slow/zombie_idle5.wav","vj_zombies/slow/zombie_idle6.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/slow/zombie_alert1.wav","vj_zombies/slow/zombie_alert2.wav","vj_zombies/slow/zombie_alert3.wav","vj_zombies/slow/zombie_alert4.wav"}
@@ -56,8 +56,8 @@ function ENT:PreInit()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
--- "vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "vjseq_attackd", "vjseq_attacke" ,"vjseq_attackf"   |   Unused (Faster): "vjseq_swatrightmid", "vjseq_swatleftmid"
--- "vjseq_attacke" ,"vjseq_attackf"   |   Unused (Faster): "vjseq_swatleftlow", "vjseq_swatrightlow"
+-- "vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "vjseq_attackd", "vjseq_attacke", "vjseq_attackf"   |   Unused (Faster): "vjseq_swatrightmid", "vjseq_swatleftmid"
+-- "vjseq_attacke", "vjseq_attackf"   |   Unused (Faster): "vjseq_swatleftlow", "vjseq_swatrightlow"
 --
 function ENT:OnInput(key, activator, caller, data)
 	if key == "step" then
@@ -66,10 +66,10 @@ function ENT:OnInput(key, activator, caller, data)
 		self:PlayFootstepSound(sdFootScuff)
 	elseif key == "melee" then
 		self.MeleeAttackDamage = 20
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	elseif key == "melee_heavy" then
 		self.MeleeAttackDamage = 30
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

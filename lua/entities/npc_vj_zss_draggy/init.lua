@@ -5,22 +5,22 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_zombies/draggy.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_zombies/draggy.mdl"
 ENT.StartHealth = 200
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
-ENT.MeleeAttackDistance = 22 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 65 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.TimeUntilMeleeAttackDamage = 0.2 -- This counted in seconds | This calculates the time until it hits something
-ENT.NextAnyAttackTime_Melee = 0.2 -- How much time until it can use any attack again? | Counted in Seconds
+ENT.MeleeAttackDistance = 22
+ENT.MeleeAttackDamageDistance = 65
+ENT.TimeUntilMeleeAttackDamage = 0.2
+ENT.NextAnyAttackTime_Melee = 0.2
 ENT.MeleeAttackDamage = 20
 ENT.PropInteraction = "OnlyDamage"
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound Paths ====== --
+ENT.HasExtraMeleeAttackSounds = true
+
 ENT.SoundTbl_Idle = {"vj_zombies/special/zmisc_idle1.wav","vj_zombies/special/zmisc_idle2.wav","vj_zombies/special/zmisc_idle3.wav","vj_zombies/special/zmisc_idle4.wav","vj_zombies/special/zmisc_idle5.wav","vj_zombies/special/zmisc_idle6.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/special/zmisc_alert1.wav","vj_zombies/special/zmisc_alert2.wav"}
 ENT.SoundTbl_MeleeAttackExtra = {"vj_zombies/special/bite1.wav","vj_zombies/special/bite2.wav","vj_zombies/special/bite3.wav","vj_zombies/special/bite4.wav"}

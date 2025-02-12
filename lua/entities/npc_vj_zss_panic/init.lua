@@ -11,25 +11,25 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = {"vjges_attack1", "vjges_attack2", "vjges_attack3", "vjges_push"}
-ENT.MeleeAttackDistance = 32 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 65 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
+ENT.MeleeAttackDistance = 32
+ENT.MeleeAttackDamageDistance = 65
+ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 15
-ENT.SlowPlayerOnMeleeAttack = true -- If true, then the player will slow down
-ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100 -- Walking Speed when Slow Player is on
-ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100 -- Running Speed when Slow Player is on
-ENT.SlowPlayerOnMeleeAttackTime = 5 -- How much time until player's Speed resets
-ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
-ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bleed? | 1 = always
-ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
-ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
-ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
+ENT.SlowPlayerOnMeleeAttack = true
+ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100
+ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100
+ENT.SlowPlayerOnMeleeAttackTime = 5
+ENT.MeleeAttackBleedEnemy = true
+ENT.MeleeAttackBleedEnemyChance = 3
+ENT.MeleeAttackBleedEnemyDamage = 1
+ENT.MeleeAttackBleedEnemyTime = 1
+ENT.MeleeAttackBleedEnemyReps = 4
 ENT.GibOnDeathFilter = false
 ENT.DisableFootStepSoundTimer = true
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound Paths ====== --
+ENT.HasExtraMeleeAttackSounds = true
+
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav", "npc/zombie/foot2.wav", "npc/zombie/foot3.wav"}
 ENT.SoundTbl_MeleeAttackExtra = {"vj_zombies/panic/Z_Hit-01.wav", "vj_zombies/panic/Z_Hit-02.wav", "vj_zombies/panic/Z_Hit-03.wav", "vj_zombies/panic/Z_Hit-04.wav", "vj_zombies/panic/Z_Hit-05.wav", "vj_zombies/panic/Z_Hit-06.wav"}
 ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/panic/z-swipe-1.wav", "vj_zombies/panic/z-swipe-2.wav", "vj_zombies/panic/z-swipe-3.wav", "vj_zombies/panic/z-swipe-4.wav", "vj_zombies/panic/z-swipe-5.wav", "vj_zombies/panic/z-swipe-6.wav"}
@@ -96,10 +96,10 @@ function ENT:OnInput(key, activator, caller, data)
 		self:PlayFootstepSound()
 	elseif key == "melee" then
 		self.MeleeAttackDamage = 15
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	elseif key == "melee_push" then
 		self.MeleeAttackDamage = 20
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

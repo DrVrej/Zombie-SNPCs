@@ -10,31 +10,31 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
-ENT.MeleeAttackDistance = 32 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
+ENT.MeleeAttackDistance = 32
+ENT.MeleeAttackDamageDistance = 85
+ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 5
-ENT.MeleeAttackBleedEnemy = true -- Should the player bleed when attacked by melee
-ENT.MeleeAttackBleedEnemyChance = 3 -- How chance there is that the play will bleed? | 1 = always
-ENT.MeleeAttackBleedEnemyDamage = 1 -- How much damage will the enemy get on every rep?
-ENT.MeleeAttackBleedEnemyTime = 1 -- How much time until the next rep?
-ENT.MeleeAttackBleedEnemyReps = 4 -- How many reps?
-ENT.HasLeapAttack = true -- Can this NPC leap attack?
+ENT.MeleeAttackBleedEnemy = true
+ENT.MeleeAttackBleedEnemyChance = 3
+ENT.MeleeAttackBleedEnemyDamage = 1
+ENT.MeleeAttackBleedEnemyTime = 1
+ENT.MeleeAttackBleedEnemyReps = 4
+ENT.HasLeapAttack = true
 ENT.AnimTbl_LeapAttack = {ACT_JUMP}
-ENT.LeapDistance = 400 -- The max distance that the NPC can leap from
-ENT.LeapToMeleeDistance = 150 -- How close does it have to be until it uses melee?
-ENT.TimeUntilLeapAttackDamage = 0.2 -- How much time until it runs the leap damage code?
-ENT.NextLeapAttackTime = 3 -- How much time until it can use a leap attack?
-ENT.NextAnyAttackTime_Leap = 0.4 -- How much time until it can use any attack again? | Counted in Seconds
-ENT.LeapAttackExtraTimers = {0.4, 0.6, 0.8, 1} -- Extra leap attack timers | it will run the damage code after the given amount of seconds
-ENT.TimeUntilLeapAttackVelocity = 0.2 -- How much time until it runs the velocity code?
+ENT.LeapDistance = 400
+ENT.LeapToMeleeDistance = 150
+ENT.TimeUntilLeapAttackDamage = 0.2
+ENT.NextLeapAttackTime = 3
+ENT.NextAnyAttackTime_Leap = 0.4
+ENT.LeapAttackExtraTimers = {0.4, 0.6, 0.8, 1}
+ENT.TimeUntilLeapAttackVelocity = 0.2
 ENT.LeapAttackDamage = 15
-ENT.LeapAttackDamageDistance = 100 -- How far does the damage go?
+ENT.LeapAttackDamageDistance = 100
 ENT.DisableFootStepSoundTimer = true
-ENT.HasExtraMeleeAttackSounds = true -- Set to true to use the extra melee attack sounds
-	-- ====== Sound Paths ====== --
+ENT.HasExtraMeleeAttackSounds = true
+
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
 ENT.SoundTbl_Idle = {"vj_zombies/fast/fzombie_idle1.wav","vj_zombies/fast/fzombie_idle2.wav","vj_zombies/fast/fzombie_idle3.wav","vj_zombies/fast/fzombie_idle4.wav","vj_zombies/fast/fzombie_idle5.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/fast/fzombie_alert1.wav","vj_zombies/fast/fzombie_alert2.wav","vj_zombies/fast/fzombie_alert3.wav"}
@@ -80,7 +80,7 @@ function ENT:OnInput(key, activator, caller, data)
 	if key == "step" then
 		self:PlayFootstepSound()
 	elseif key == "melee" then
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------

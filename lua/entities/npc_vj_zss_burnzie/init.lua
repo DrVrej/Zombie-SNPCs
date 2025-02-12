@@ -5,23 +5,23 @@ include("shared.lua")
 	No parts of this code or any of its contents may be reproduced, copied, modified or adapted,
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
-ENT.Model = "models/vj_zombies/burnzie.mdl" -- Model(s) to spawn with | Picks a random one if it's a table
+ENT.Model = "models/vj_zombies/burnzie.mdl"
 ENT.StartHealth = 200
 ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
-ENT.Immune_Fire = true -- Immune to fire damage
+ENT.Immune_Fire = true
 
-ENT.HasMeleeAttack = true -- Can this NPC melee attack?
+ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
-ENT.MeleeAttackDistance = 32 -- How close an enemy has to be to trigger a melee attack | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.MeleeAttackDamageDistance = 85 -- How far does the damage go | false = Let the base auto calculate on initialize based on the NPC's collision bounds
-ENT.TimeUntilMeleeAttackDamage = false -- This counted in seconds | This calculates the time until it hits something
+ENT.MeleeAttackDistance = 32
+ENT.MeleeAttackDamageDistance = 85
+ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 20
 
 ENT.DisableFootStepSoundTimer = true
-	-- ====== Sound Paths ====== --
+
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
 ENT.SoundTbl_Idle = {"vj_zombies/special/zmisc_idle1.wav","vj_zombies/special/zmisc_idle2.wav","vj_zombies/special/zmisc_idle3.wav","vj_zombies/special/zmisc_idle4.wav","vj_zombies/special/zmisc_idle5.wav","vj_zombies/special/zmisc_idle6.wav"}
 ENT.SoundTbl_Alert = {"vj_zombies/special/zmisc_alert1.wav","vj_zombies/special/zmisc_alert2.wav"}
@@ -39,7 +39,7 @@ function ENT:OnInput(key, activator, caller, data)
 	if key == "step" then
 		self:PlayFootstepSound()
 	elseif key == "melee" then
-		self:MeleeAttackCode()
+		self:ExecuteMeleeAttack()
 	end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
