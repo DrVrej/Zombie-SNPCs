@@ -18,10 +18,6 @@ ENT.MeleeAttackDamageDistance = 85
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 40
 ENT.MeleeAttackBleedEnemy = true
-ENT.MeleeAttackBleedEnemyChance = 3
-ENT.MeleeAttackBleedEnemyDamage = 1
-ENT.MeleeAttackBleedEnemyTime = 1
-ENT.MeleeAttackBleedEnemyReps = 4
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true
 

@@ -20,19 +20,12 @@ ENT.MeleeAttackDistance = 30
 ENT.MeleeAttackDamageDistance = 70
 ENT.MeleeAttackDamageAngleRadius = 180 -- We need this because its eye position ends up rotating too much on melee!
 ENT.SlowPlayerOnMeleeAttack = true
-ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100
-ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100
-ENT.SlowPlayerOnMeleeAttackTime = 5
 ENT.MeleeAttackBleedEnemy = true
-ENT.MeleeAttackBleedEnemyChance = 3
-ENT.MeleeAttackBleedEnemyDamage = 1
-ENT.MeleeAttackBleedEnemyTime = 1
-ENT.MeleeAttackBleedEnemyReps = 4
 
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true
 
-ENT.CanFlinch = 1
+ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.HitGroupFlinching_Values = {{HitGroup = {HITGROUP_HEAD}, Animation = {ACT_FLINCH_HEAD}}, {HitGroup = {HITGROUP_LEFTARM}, Animation = {ACT_FLINCH_LEFTARM}}, {HitGroup = {HITGROUP_RIGHTARM}, Animation = {ACT_FLINCH_RIGHTARM}}, {HitGroup = {HITGROUP_LEFTLEG}, Animation = {ACT_FLINCH_LEFTLEG}}, {HitGroup = {HITGROUP_RIGHTLEG}, Animation = {ACT_FLINCH_RIGHTLEG}}}
 

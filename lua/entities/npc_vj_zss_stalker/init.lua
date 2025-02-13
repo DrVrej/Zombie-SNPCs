@@ -18,14 +18,7 @@ ENT.MeleeAttackDamageDistance = 65
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 20
 ENT.SlowPlayerOnMeleeAttack = true
-ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100
-ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100
-ENT.SlowPlayerOnMeleeAttackTime = 5
 ENT.MeleeAttackBleedEnemy = true
-ENT.MeleeAttackBleedEnemyChance = 3
-ENT.MeleeAttackBleedEnemyDamage = 1
-ENT.MeleeAttackBleedEnemyTime = 1
-ENT.MeleeAttackBleedEnemyReps = 4
 ENT.DisableFootStepSoundTimer = true
 
 ENT.SoundTbl_FootStep = {"npc/stalker/stalker_footstep_left1.wav", "npc/stalker/stalker_footstep_left2.wav", "npc/stalker/stalker_footstep_right1.wav", "npc/stalker/stalker_footstep_right2.wav"}

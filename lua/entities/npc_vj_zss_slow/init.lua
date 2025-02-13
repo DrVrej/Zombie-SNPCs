@@ -16,17 +16,10 @@ ENT.MeleeAttackDistance = 32
 ENT.MeleeAttackDamageDistance = 65
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.SlowPlayerOnMeleeAttack = true
-ENT.SlowPlayerOnMeleeAttack_WalkSpeed = 100
-ENT.SlowPlayerOnMeleeAttack_RunSpeed = 100
-ENT.SlowPlayerOnMeleeAttackTime = 5
 ENT.MeleeAttackBleedEnemy = true
-ENT.MeleeAttackBleedEnemyChance = 3
-ENT.MeleeAttackBleedEnemyDamage = 1
-ENT.MeleeAttackBleedEnemyTime = 1
-ENT.MeleeAttackBleedEnemyReps = 4
 ENT.DisableFootStepSoundTimer = true
 
-ENT.CanFlinch = 1
+ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.HitGroupFlinching_Values = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_flinch_head"}},
