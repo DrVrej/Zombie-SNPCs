@@ -17,7 +17,7 @@ ENT.MeleeAttackDistance = 32
 ENT.MeleeAttackDamageDistance = 65
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 20
-ENT.SlowPlayerOnMeleeAttack = true
+ENT.MeleeAttackPlayerSpeed = true
 ENT.MeleeAttackBleedEnemy = true
 ENT.DisableFootStepSoundTimer = true
 
@@ -30,7 +30,7 @@ ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav","vj_zombies/slow/mis
 //ENT.SoundTbl_Pain = {"vj_zombies/special/zmisc_pain1.wav","vj_zombies/special/zmisc_pain2.wav","vj_zombies/special/zmisc_pain3.wav","vj_zombies/special/zmisc_pain4.wav","vj_zombies/special/zmisc_pain5.wav","vj_zombies/special/zmisc_pain6.wav"}
 ENT.SoundTbl_Death = {"vj_zombies/special/zmisc_die1.wav","vj_zombies/special/zmisc_die2.wav","vj_zombies/special/zmisc_die3.wav"}
 
-//ENT.FootStepSoundLevel = 55 -- Used by the older footstep sound "physics/metal/metal_box_footstep3.wav"
+//ENT.FootstepSoundLevel = 55 -- Used by the older footstep sound "physics/metal/metal_box_footstep3.wav"
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()
 	self:SetCollisionBounds(Vector(9, 9, 65), Vector(-9, -9, 0))

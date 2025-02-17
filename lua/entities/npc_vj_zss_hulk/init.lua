@@ -18,7 +18,7 @@ ENT.MeleeAttackDistance = 35
 ENT.MeleeAttackDamageDistance = 95
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 65
-ENT.SlowPlayerOnMeleeAttack = true
+ENT.MeleeAttackPlayerSpeed = true
 ENT.MeleeAttackBleedEnemy = true
 ENT.DisableFootStepSoundTimer = true
 ENT.HasMeleeAttackKnockBack = true
@@ -38,7 +38,7 @@ ENT.SoundTbl_Death = {"npc/zombie_poison/pz_die1.wav","npc/zombie_poison/pz_die2
 ENT.GeneralSoundPitch1 = 75
 ENT.GeneralSoundPitch2 = 80
 
-ENT.FootStepSoundLevel = 80
+ENT.FootstepSoundLevel = 80
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Init()

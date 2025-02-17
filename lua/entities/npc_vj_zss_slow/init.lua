@@ -15,13 +15,13 @@ ENT.AnimTbl_MeleeAttack = {"vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "v
 ENT.MeleeAttackDistance = 32
 ENT.MeleeAttackDamageDistance = 65
 ENT.TimeUntilMeleeAttackDamage = false
-ENT.SlowPlayerOnMeleeAttack = true
+ENT.MeleeAttackPlayerSpeed = true
 ENT.MeleeAttackBleedEnemy = true
 ENT.DisableFootStepSoundTimer = true
 
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
-ENT.HitGroupFlinching_Values = {
+ENT.FlinchHitGroupMap = {
 	{HitGroup = {HITGROUP_HEAD}, Animation = {"vjges_flinch_head"}},
 	{HitGroup = {HITGROUP_CHEST}, Animation = {"vjges_flinch_chest"}},
 	{HitGroup = {HITGROUP_LEFTARM}, Animation = {"vjges_flinch_leftArm"}},

@@ -7,7 +7,7 @@ include("shared.lua")
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
 ENT.Model = "models/vj_zombies/slow_main.mdl"
-ENT.SlowPlayerOnMeleeAttack = false
+ENT.MeleeAttackPlayerSpeed = false
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
