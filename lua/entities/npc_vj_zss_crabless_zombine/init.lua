@@ -37,8 +37,7 @@ ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav","vj_zombies/slow/mis
 ENT.SoundTbl_Pain = {"vj_zombies/zombine/pain1.wav","vj_zombies/zombine/pain2.wav","vj_zombies/zombine/pain3.wav","vj_zombies/zombine/pain4.wav"}
 ENT.SoundTbl_Death = {"vj_zombies/zombine/die1.wav","vj_zombies/zombine/die2.wav"}
 
-ENT.GeneralSoundPitch1 = 100
-ENT.GeneralSoundPitch2 = 100
+ENT.MainSoundPitch = 100
 
 -- Custom
 ENT.Zombie_GrenadeOut = false -- Can only do it once!

@@ -19,5 +19,4 @@ ENT.SoundTbl_LeapAttackDamage = {"npc/fast_zombie/claw_strike1.wav","npc/fast_zo
 ENT.SoundTbl_Pain = {"npc/fast_zombie/idle1.wav","npc/fast_zombie/idle2.wav","npc/fast_zombie/idle3.wav"}
 ENT.SoundTbl_Death = "npc/fast_zombie/wake1.wav"
 
-ENT.GeneralSoundPitch1 = 100
-ENT.GeneralSoundPitch2 = 100
+ENT.MainSoundPitch = 100

@@ -35,8 +35,7 @@ ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav","vj_zombies/slow/mis
 ENT.SoundTbl_Pain = {"npc/zombie_poison/pz_pain1.wav","npc/zombie_poison/pz_pain2.wav","npc/zombie_poison/pz_pain3.wav"}
 ENT.SoundTbl_Death = {"npc/zombie_poison/pz_die1.wav","npc/zombie_poison/pz_die2.wav"}
 
-ENT.GeneralSoundPitch1 = 75
-ENT.GeneralSoundPitch2 = 80
+ENT.MainSoundPitch = VJ.SET(75, 80)
 
 ENT.FootstepSoundLevel = 80
 
