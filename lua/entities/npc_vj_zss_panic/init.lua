@@ -99,7 +99,7 @@ end
 function ENT:TranslateActivity(act)
 	if act == ACT_GLIDE then -- Because there is no jumping animation, so just use idle!
 		return ACT_IDLE
-	elseif act == ACT_RUN && self.Zombie_Type == ZOMBIE_TYPE_CARRIER && self.LatestEnemyDistance < 400 && IsValid(self:GetEnemy()) then -- Carriers can go berserk when close to enemy!
+	elseif act == ACT_RUN && self.Zombie_Type == ZOMBIE_TYPE_CARRIER && self.EnemyData.Distance < 400 && IsValid(self:GetEnemy()) then -- Carriers can go berserk when close to enemy!
 		//VJ.EmitSound(self, "vj_zombies/panic/Activate.wav", 50)
 		return ACT_SPRINT
 	end

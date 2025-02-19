@@ -61,11 +61,11 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:TranslateActivity(act)
 	-- We have an active grenade
-	if IsValid(self.Zombie_Grenade) == true then
+	if IsValid(self.Zombie_Grenade) then
 		if act == ACT_IDLE then
 			return ACT_HANDGRENADE_THROW1
 		elseif (act == ACT_WALK or act == ACT_RUN) && IsValid(self:GetEnemy()) then
-			if self.LatestEnemyDistance < 1024 then -- Make it run when close to the enemy
+			if self.EnemyData.Distance < 1024 then -- Make it run when close to the enemy
 				return ACT_HANDGRENADE_THROW3
 			else
 				return ACT_HANDGRENADE_THROW2
@@ -75,7 +75,7 @@ function ENT:TranslateActivity(act)
 		if self:IsOnFire() then
 			return ACT_WALK_ON_FIRE
 		elseif  IsValid(self:GetEnemy()) then
-			if self.LatestEnemyDistance < 1024 then -- Make it run when close to the enemy
+			if self.EnemyData.Distance < 1024 then -- Make it run when close to the enemy
 				return ACT_RUN
 			else
 				return ACT_WALK
@@ -93,7 +93,7 @@ function ENT:OnThinkActive()
 				self.VJ_TheController:PrintMessage(HUD_PRINTCENTER, "Pulling Grenade Out!")
 				self:Zombie_CreateGrenade()
 			end
-		elseif IsValid(self:GetEnemy()) && self.LatestEnemyDistance <= 256 && self:Health() <= 40 then
+		elseif IsValid(self:GetEnemy()) && self.EnemyData.Distance <= 256 && self:Health() <= 40 then
 			self:Zombie_CreateGrenade()
 		end
 	end
