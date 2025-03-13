@@ -29,13 +29,13 @@ ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
 ENT.FlinchHitGroupMap = {{HitGroup = {HITGROUP_HEAD}, Animation = {ACT_FLINCH_HEAD}}, {HitGroup = {HITGROUP_LEFTARM}, Animation = {ACT_FLINCH_LEFTARM}}, {HitGroup = {HITGROUP_RIGHTARM}, Animation = {ACT_FLINCH_RIGHTARM}}, {HitGroup = {HITGROUP_LEFTLEG}, Animation = {ACT_FLINCH_LEFTLEG}}, {HitGroup = {HITGROUP_RIGHTLEG}, Animation = {ACT_FLINCH_RIGHTLEG}}}
 
-ENT.SoundTbl_FootStep = {"vj_zombies/zombine/gear1.wav","vj_zombies/zombine/gear2.wav","vj_zombies/zombine/gear3.wav"}
-ENT.SoundTbl_Idle = {"vj_zombies/zombine/idle1.wav","vj_zombies/zombine/idle2.wav","vj_zombies/zombine/idle3.wav","vj_zombies/zombine/idle4.wav","vj_zombies/zombine/idle5.wav"}
-ENT.SoundTbl_Alert = {"vj_zombies/zombine/alert1.wav","vj_zombies/zombine/alert2.wav","vj_zombies/zombine/alert3.wav","vj_zombies/zombine/alert4.wav","vj_zombies/zombine/alert5.wav","vj_zombies/zombine/alert6.wav"}
-ENT.SoundTbl_BeforeMeleeAttack = {"vj_zombies/zombine/attack1.wav","vj_zombies/zombine/attack2.wav","vj_zombies/zombine/attack3.wav","vj_zombies/zombine/attack4.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav","vj_zombies/slow/miss2.wav","vj_zombies/slow/miss3.wav","vj_zombies/slow/miss4.wav"}
-ENT.SoundTbl_Pain = {"vj_zombies/zombine/pain1.wav","vj_zombies/zombine/pain2.wav","vj_zombies/zombine/pain3.wav","vj_zombies/zombine/pain4.wav"}
-ENT.SoundTbl_Death = {"vj_zombies/zombine/die1.wav","vj_zombies/zombine/die2.wav"}
+ENT.SoundTbl_FootStep = {"vj_zombies/zombine/gear1.wav", "vj_zombies/zombine/gear2.wav", "vj_zombies/zombine/gear3.wav"}
+ENT.SoundTbl_Idle = {"vj_zombies/zombine/idle1.wav", "vj_zombies/zombine/idle2.wav", "vj_zombies/zombine/idle3.wav", "vj_zombies/zombine/idle4.wav", "vj_zombies/zombine/idle5.wav"}
+ENT.SoundTbl_Alert = {"vj_zombies/zombine/alert1.wav", "vj_zombies/zombine/alert2.wav", "vj_zombies/zombine/alert3.wav", "vj_zombies/zombine/alert4.wav", "vj_zombies/zombine/alert5.wav", "vj_zombies/zombine/alert6.wav"}
+ENT.SoundTbl_BeforeMeleeAttack = {"vj_zombies/zombine/attack1.wav", "vj_zombies/zombine/attack2.wav", "vj_zombies/zombine/attack3.wav", "vj_zombies/zombine/attack4.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav", "vj_zombies/slow/miss2.wav", "vj_zombies/slow/miss3.wav", "vj_zombies/slow/miss4.wav"}
+ENT.SoundTbl_Pain = {"vj_zombies/zombine/pain1.wav", "vj_zombies/zombine/pain2.wav", "vj_zombies/zombine/pain3.wav", "vj_zombies/zombine/pain4.wav"}
+ENT.SoundTbl_Death = {"vj_zombies/zombine/die1.wav", "vj_zombies/zombine/die2.wav"}
 
 ENT.MainSoundPitch = 100
 

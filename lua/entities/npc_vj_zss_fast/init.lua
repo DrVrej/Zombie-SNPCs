@@ -31,16 +31,16 @@ ENT.LeapAttackDamageDistance = 100
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true
 
-ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav","npc/zombie/foot2.wav","npc/zombie/foot3.wav"}
-ENT.SoundTbl_Idle = {"vj_zombies/fast/fzombie_idle1.wav","vj_zombies/fast/fzombie_idle2.wav","vj_zombies/fast/fzombie_idle3.wav","vj_zombies/fast/fzombie_idle4.wav","vj_zombies/fast/fzombie_idle5.wav"}
-ENT.SoundTbl_Alert = {"vj_zombies/fast/fzombie_alert1.wav","vj_zombies/fast/fzombie_alert2.wav","vj_zombies/fast/fzombie_alert3.wav"}
-ENT.SoundTbl_MeleeAttack = {"vj_zombies/fast/attack1.wav","vj_zombies/fast/attack2.wav","vj_zombies/fast/attack3.wav"}
-ENT.SoundTbl_MeleeAttackExtra = {"npc/zombie/claw_strike1.wav","npc/zombie/claw_strike2.wav","npc/zombie/claw_strike3.wav"}
-ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav","vj_zombies/slow/miss2.wav","vj_zombies/slow/miss3.wav","vj_zombies/slow/miss4.wav"}
-ENT.SoundTbl_LeapAttackJump = {"vj_zombies/fast/hunter_attackmix_01.wav","vj_zombies/fast/hunter_attackmix_02.wav","vj_zombies/fast/hunter_attackmix_03.wav"}
-ENT.SoundTbl_LeapAttackDamage = {"npc/zombie/claw_strike1.wav","npc/zombie/claw_strike2.wav","npc/zombie/claw_strike3.wav"}
-ENT.SoundTbl_Pain = {"vj_zombies/fast/fzombie_pain1.wav","vj_zombies/fast/fzombie_pain2.wav","vj_zombies/fast/fzombie_pain3.wav"}
-ENT.SoundTbl_Death = {"vj_zombies/fast/fzombie_die1.wav","vj_zombies/fast/fzombie_die2.wav"}
+ENT.SoundTbl_FootStep = {"npc/zombie/foot1.wav", "npc/zombie/foot2.wav", "npc/zombie/foot3.wav"}
+ENT.SoundTbl_Idle = {"vj_zombies/fast/fzombie_idle1.wav", "vj_zombies/fast/fzombie_idle2.wav", "vj_zombies/fast/fzombie_idle3.wav", "vj_zombies/fast/fzombie_idle4.wav", "vj_zombies/fast/fzombie_idle5.wav"}
+ENT.SoundTbl_Alert = {"vj_zombies/fast/fzombie_alert1.wav", "vj_zombies/fast/fzombie_alert2.wav", "vj_zombies/fast/fzombie_alert3.wav"}
+ENT.SoundTbl_MeleeAttack = {"vj_zombies/fast/attack1.wav", "vj_zombies/fast/attack2.wav", "vj_zombies/fast/attack3.wav"}
+ENT.SoundTbl_MeleeAttackExtra = {"npc/zombie/claw_strike1.wav", "npc/zombie/claw_strike2.wav", "npc/zombie/claw_strike3.wav"}
+ENT.SoundTbl_MeleeAttackMiss = {"vj_zombies/slow/miss1.wav", "vj_zombies/slow/miss2.wav", "vj_zombies/slow/miss3.wav", "vj_zombies/slow/miss4.wav"}
+ENT.SoundTbl_LeapAttackJump = {"vj_zombies/fast/hunter_attackmix_01.wav", "vj_zombies/fast/hunter_attackmix_02.wav", "vj_zombies/fast/hunter_attackmix_03.wav"}
+ENT.SoundTbl_LeapAttackDamage = {"npc/zombie/claw_strike1.wav", "npc/zombie/claw_strike2.wav", "npc/zombie/claw_strike3.wav"}
+ENT.SoundTbl_Pain = {"vj_zombies/fast/fzombie_pain1.wav", "vj_zombies/fast/fzombie_pain2.wav", "vj_zombies/fast/fzombie_pain3.wav"}
+ENT.SoundTbl_Death = {"vj_zombies/fast/fzombie_die1.wav", "vj_zombies/fast/fzombie_die2.wav"}
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:PreInit()
