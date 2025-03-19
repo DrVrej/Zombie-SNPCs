@@ -83,8 +83,8 @@ function ENT:OnStateChange(oldState, newState)
 	self.BaseClass.OnStateChange(self, oldState, newState)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
-function ENT:CustomOnMeleeAttack_AfterChecks(hitEnt, isProp)
-	if self:IsOnFire() then
-		hitEnt:Ignite(math.Rand(3, 5))
+function ENT:OnMeleeAttackExecute(status, ent, isProp)
+	if status == "PreDamage" && self:IsOnFire() then
+		ent:Ignite(math.Rand(3, 5))
 	end
 end
