@@ -27,7 +27,13 @@ ENT.HasExtraMeleeAttackSounds = true
 
 ENT.CanFlinch = true
 ENT.AnimTbl_Flinch = ACT_FLINCH_PHYSICS
-ENT.FlinchHitGroupMap = {{HitGroup = {HITGROUP_HEAD}, Animation = {ACT_FLINCH_HEAD}}, {HitGroup = {HITGROUP_LEFTARM}, Animation = {ACT_FLINCH_LEFTARM}}, {HitGroup = {HITGROUP_RIGHTARM}, Animation = {ACT_FLINCH_RIGHTARM}}, {HitGroup = {HITGROUP_LEFTLEG}, Animation = {ACT_FLINCH_LEFTLEG}}, {HitGroup = {HITGROUP_RIGHTLEG}, Animation = {ACT_FLINCH_RIGHTLEG}}}
+ENT.FlinchHitGroupMap = {
+	{HitGroup = HITGROUP_HEAD, Animation = ACT_FLINCH_HEAD},
+	{HitGroup = HITGROUP_LEFTARM, Animation = ACT_FLINCH_LEFTARM},
+	{HitGroup = HITGROUP_RIGHTARM, Animation = ACT_FLINCH_RIGHTARM},
+	{HitGroup = HITGROUP_LEFTLEG, Animation = ACT_FLINCH_LEFTLEG},
+	{HitGroup = HITGROUP_RIGHTLEG, Animation = ACT_FLINCH_RIGHTLEG}
+}
 
 ENT.SoundTbl_FootStep = {"vj_zombies/zombine/gear1.wav", "vj_zombies/zombine/gear2.wav", "vj_zombies/zombine/gear3.wav"}
 ENT.SoundTbl_Idle = {"vj_zombies/zombine/idle1.wav", "vj_zombies/zombine/idle2.wav", "vj_zombies/zombine/idle3.wav", "vj_zombies/zombine/idle4.wav", "vj_zombies/zombine/idle5.wav"}
