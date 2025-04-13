@@ -36,30 +36,30 @@ end
 local defAng = Angle(0, 0, 0)
 --
 function ENT:OnThinkActive()
-	if IsValid(self:GetEnemy()) && CurTime() > self.ZBoss_NextMiniBossSpawnT && !IsValid(self.MiniBoss1) && !IsValid(self.MiniBoss2) && ((self.VJ_IsBeingControlled == false) or (self.VJ_IsBeingControlled == true && self.VJ_TheController:KeyDown(IN_JUMP))) then
-		if self.VJ_IsBeingControlled == true then
+	if IsValid(self:GetEnemy()) && CurTime() > self.ZBoss_NextMiniBossSpawnT && !IsValid(self.MiniBoss1) && !IsValid(self.MiniBoss2) && ((!self.VJ_IsBeingControlled) or (self.VJ_IsBeingControlled && self.VJ_TheController:KeyDown(IN_JUMP))) then
+		if self.VJ_IsBeingControlled then
 			self.VJ_TheController:PrintMessage(HUD_PRINTCENTER, "Spawning Mini Zombie Bosses! Cool Down: 20 seconds!")
 		end
 		local myPos = self:GetPos()
 		local myAng = self:GetAngles()
 		
 		self:PlayAnim("vjseq_releasecrab", true, false, false)
-		ParticleEffect("vj_aurora_shockwave", myPos, defAng, nil)
+		ParticleEffect("vj_aurora_shockwave", myPos, defAng)
 		VJ.EmitSound(self, "npc/zombie_poison/pz_call1.wav", 90, 80)
 		
 		local mini1 = ents.Create("npc_vj_zss_boss_mini")
-		mini1:SetPos(myPos + self:GetRight()*60)
+		mini1:SetPos(myPos + self:GetRight() * 60)
 		mini1:SetAngles(myAng)
 		mini1:Spawn()
-		mini1:PlayAnim("vjseq_canal5aattack", true, 0.6, true, 0, {SequenceDuration=0.6})
+		mini1:PlayAnim("vjseq_canal5aattack", true, 0.6, true)
 		mini1:SetOwner(self)
 		self.MiniBoss1 = mini1
 		
 		local mini2 = ents.Create("npc_vj_zss_boss_mini")
-		mini2:SetPos(myPos + self:GetRight()*-60)
+		mini2:SetPos(myPos + self:GetRight() * -60)
 		mini2:SetAngles(myAng)
 		mini2:Spawn()
-		mini2:PlayAnim("vjseq_canal5aattack", true, 0.6, true, 0, {SequenceDuration=0.6})
+		mini2:PlayAnim("vjseq_canal5aattack", true, 0.6, true)
 		mini2:SetOwner(self)
 		self.MiniBoss2 = mini2
 		

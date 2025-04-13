@@ -11,6 +11,7 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
+
 ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = {"vjseq_attacka", "vjseq_attackb", "vjseq_attackc", "vjseq_attackd", "vjseq_attacke", "vjseq_attackf"}
 ENT.MeleeAttackDistance = 32
