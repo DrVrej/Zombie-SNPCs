@@ -8,13 +8,14 @@ include("shared.lua")
 ENT.Model = "models/zombie/classic_torso.mdl"
 ENT.StartHealth = 60
 ENT.HullType = HULL_TINY
+ENT.SightAngle = 200 -- Because its idle animation tilts the head weirdly
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
-ENT.MeleeAttackDistance = 15
-ENT.MeleeAttackDamageDistance = 65
+ENT.MeleeAttackDistance = 40
+ENT.MeleeAttackDamageDistance = 50
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 20
 ENT.MeleeAttackBleedEnemy = true

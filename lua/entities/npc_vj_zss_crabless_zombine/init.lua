@@ -18,7 +18,6 @@ ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 35
 ENT.MeleeAttackDistance = 30
 ENT.MeleeAttackDamageDistance = 70
-ENT.MeleeAttackDamageAngleRadius = 180 -- We need this because its eye position ends up rotating too much on melee!
 ENT.MeleeAttackPlayerSpeed = true
 ENT.MeleeAttackBleedEnemy = true
 
@@ -103,6 +102,10 @@ function ENT:OnThinkActive()
 			self:Zombie_CreateGrenade()
 		end
 	end
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+function ENT:MeleeAttackTraceDirection()
+	return self:GetForward()
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------
 function ENT:Zombie_CreateGrenade()

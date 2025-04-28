@@ -12,7 +12,7 @@ ENT.HullType = HULL_HUMAN
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
 ENT.HasMeleeAttack = true
-ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
+ENT.AnimTbl_MeleeAttack = {"vjseq_melee_01", "vjseq_melee_03"} -- "melee_02" has unaligned animation event
 ENT.MeleeAttackDistance = 32
 ENT.MeleeAttackDamageDistance = 85
 ENT.TimeUntilMeleeAttackDamage = false
@@ -53,7 +53,7 @@ function ENT:OnAnimEvent(ev, evTime, evCycle, evType, evOptions)
 	local eventName = getEventName(ev)
 	if eventName == "AE_ZOMBIE_STEP_LEFT" or eventName == "AE_ZOMBIE_STEP_RIGHT" then
 		self:PlayFootstepSound()
-	elseif eventName == "AE_ZOMBIE_ATTACK_RIGHT" then
+	elseif eventName == "AE_ZOMBIE_ATTACK_RIGHT" or eventName == "AE_ZOMBIE_ATTACK_LEFT" or eventName == "AE_ZOMBIE_ATTACK_BOTH" then
 		self:ExecuteMeleeAttack()
 	end
 end
