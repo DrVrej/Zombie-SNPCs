@@ -11,6 +11,7 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
+
 ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDistance = 22
@@ -19,6 +20,7 @@ ENT.TimeUntilMeleeAttackDamage = 0.2
 ENT.NextAnyAttackTime_Melee = 0.2
 ENT.MeleeAttackDamage = 20
 ENT.PropInteraction = "OnlyDamage"
+
 ENT.HasExtraMeleeAttackSounds = true
 
 ENT.SoundTbl_Idle = {"vj_zombies/special/zmisc_idle1.wav", "vj_zombies/special/zmisc_idle2.wav", "vj_zombies/special/zmisc_idle3.wav", "vj_zombies/special/zmisc_idle4.wav", "vj_zombies/special/zmisc_idle5.wav", "vj_zombies/special/zmisc_idle6.wav"}

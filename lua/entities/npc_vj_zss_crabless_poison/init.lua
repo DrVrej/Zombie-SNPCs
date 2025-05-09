@@ -11,6 +11,7 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
+
 ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = {"vjseq_melee_01", "vjseq_melee_03"} -- "melee_02" has unaligned animation event
 ENT.MeleeAttackDistance = 32
@@ -18,6 +19,7 @@ ENT.MeleeAttackDamageDistance = 85
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 40
 ENT.MeleeAttackBleedEnemy = true
+
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true
 

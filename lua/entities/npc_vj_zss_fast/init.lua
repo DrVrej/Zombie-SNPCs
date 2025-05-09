@@ -10,6 +10,7 @@ ENT.HullType = HULL_HUMAN
 ---------------------------------------------------------------------------------------------------------------------------------------------
 ENT.VJ_NPC_Class = {"CLASS_ZOMBIE"}
 ENT.BloodColor = VJ.BLOOD_COLOR_RED
+
 ENT.HasMeleeAttack = true
 ENT.AnimTbl_MeleeAttack = ACT_MELEE_ATTACK1
 ENT.MeleeAttackDistance = 32
@@ -17,6 +18,7 @@ ENT.MeleeAttackDamageDistance = 85
 ENT.TimeUntilMeleeAttackDamage = false
 ENT.MeleeAttackDamage = 5
 ENT.MeleeAttackBleedEnemy = true
+
 ENT.HasLeapAttack = true
 ENT.AnimTbl_LeapAttack = ACT_JUMP
 ENT.LeapAttackMaxDistance = 400
@@ -28,6 +30,7 @@ ENT.LeapAttackExtraTimers = {0.4, 0.6, 0.8, 1}
 ENT.TimeUntilLeapAttackVelocity = 0.2
 ENT.LeapAttackDamage = 15
 ENT.LeapAttackDamageDistance = 100
+
 ENT.DisableFootStepSoundTimer = true
 ENT.HasExtraMeleeAttackSounds = true
 
