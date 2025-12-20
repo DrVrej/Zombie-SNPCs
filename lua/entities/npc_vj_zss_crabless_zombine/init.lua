@@ -94,7 +94,7 @@ function ENT:OnThinkActive()
 	-- Pull out the grenade
 	if !self.Zombie_GrenadeOut then
 		if self.VJ_IsBeingControlled then
-			if  self.VJ_TheController:KeyDown(IN_JUMP) then
+			if self.VJ_TheController:KeyDown(IN_JUMP) then
 				self.VJ_TheController:PrintMessage(HUD_PRINTCENTER, "Pulling Grenade Out!")
 				self:Zombie_CreateGrenade()
 			end
@@ -116,7 +116,7 @@ function ENT:Zombie_CreateGrenade()
 			local grenade = ents.Create("npc_grenade_frag")
 			grenade:SetOwner(self)
 			grenade:SetParent(self)
-			grenade:Fire("SetParentAttachment", "grenade_attachment", 0)
+			grenade:Fire("SetParentAttachment", "grenade_attachment")
 			grenade:Spawn()
 			grenade:Activate()
 			grenade:Input("SetTimer", self, self, 3)
